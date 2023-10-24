@@ -1,6 +1,7 @@
-.root{
+.root {
     -fx-background: lightblue;
 }
+
 .botao {
     -fx-font-size: 15px;
     -fx-text-fill: white;
