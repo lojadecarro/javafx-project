@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.javafxproject.CadastroVendedorController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Cadastro Vendedor" />
+        <Label text="Utilize o formulário abaixo para realizar o cadastro" />
+    </VBox>
+
+    <Label text="Nome" />
+    <TextField fx:id="txfNome" />
+
+    <Label text="Sobrenome" />
+    <TextField fx:id="txfSobrenome" />
+
+    <Label text="E-mail" />
+    <TextField fx:id="txfEmail" />
+
+    <Label text="CPF" />
+    <TextField fx:id="txfCPF" />
+
+    <Label text="Telefone" />
+    <TextField fx:id="txfTelefone" />
+
+    <VBox alignment="CENTER_RIGHT" spacing="20.0">
+        <Button text="Cadastrar Vendedor" onAction="#onActionCadastrar" />
+    </VBox>
+
+</VBox>

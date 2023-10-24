@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.javafxproject.CadastroUnidadeController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Cadastro Unidade" />
+        <Label text="Utilize o formulário abaixo para realizar o cadastro" />
+    </VBox>
+
+    <Label text="Ano" />
+    <TextField fx:id="txfAno" />
+
+    <Label text="Placa" />
+    <TextField fx:id="txfPlaca" />
+
+    <Label text="Quilometragem" />
+    <TextField fx:id="txfQuilometragem" />
+
+    <Label text="Valor Unitário" />
+    <TextField fx:id="txfValorUnitario" />
+
+    <Label text="Disponibilidade:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+    <ToggleButton fx:id="disponibilidadeButton" text="Disponível" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+
+    <Label text="Versão" />
+    <TextField fx:id="txfVersao" />
+
+    <Label text="Direcão" />
+    <TextField fx:id="txfDirecao" />
+
+    <Label text="Cor" />
+    <TextField fx:id="txfCor" />
+
+</VBox>
