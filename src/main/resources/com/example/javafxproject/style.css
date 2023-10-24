@@ -1,0 +1,21 @@
+.root{
+    -fx-background: lightblue;
+}
+.botao {
+    -fx-font-size: 15px;
+    -fx-text-fill: white;
+    -fx-background-color: blue;
+}
+
+.label {
+    -fx-font-weight: bolder;
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+}
+
+.titulo {
+    -fx-font-style: normal;
+    -fx-font-weight: bolder;
+    -fx-font-size: 30px;
+    -fx-text-fill: red;
+}
