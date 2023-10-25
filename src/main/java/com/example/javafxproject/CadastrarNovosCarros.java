@@ -34,8 +34,8 @@ public class CadastrarNovosCarros {
     // private CheckBox ckbAutomatico;
     // @FXML
     // private CheckBox ckbManual;
-    // @FXML
-    // private ComboBox<String> cboModelo;
+    @FXML
+    private ComboBox<String> cboModelo;
 
     public void onActionCadastrarcarronovo() {
         String cidade = txfCidade.getText();
@@ -53,7 +53,7 @@ public class CadastrarNovosCarros {
         // Boolean automatico = ckbAutomatico.isSelected();
         // Boolean manual = ckbManual.isSelected();
 
-        // String modelo = cboModelo.getValue();
+        String modelo = cboModelo.getValue();
 
 
         System.out.println(cidade);
@@ -72,7 +72,7 @@ public class CadastrarNovosCarros {
         // System.out.println(automatico);
         // System.out.println(manual);
 
-        // System.out.println(modelo);
+        System.out.println(modelo);
 
 
 
