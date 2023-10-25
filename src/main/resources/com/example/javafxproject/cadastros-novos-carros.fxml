@@ -40,7 +40,7 @@ fx:controller="com.example.javafxproject.CadastrarNovosCarros">
                 <Label text="Insira a categoria:" />
             </VBox>
 
-            <!-- <ComboBox fx:id="cboModelo" prefWidth="150.0">
+            <ComboBox fx:id="cboModelo" prefWidth="150.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Sedan" />
@@ -48,17 +48,9 @@ fx:controller="com.example.javafxproject.CadastrarNovosCarros">
                         <String fx:value="SUV" />
                     </FXCollections>
                 </items>
-            </ComboBox> -->
-
-            <ComboBox fx:id="fruitCombo" layoutX="15.0" layoutY="33.0" prefWidth="90.0" promptText="choose">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Apple" />
-                        <String fx:value="Orange" />
-                        <String fx:value="Pear" />
-                    </FXCollections>
-                </items>
             </ComboBox>
+
+            
             
             <!-- <CheckBox text="Sedan" fx:id="ckbSedan" />
             <CheckBox text="Hatch" fx:id="ckbHatch" />
