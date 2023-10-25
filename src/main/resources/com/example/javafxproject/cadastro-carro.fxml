@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.util.*?>
+<?import java.lang.String?>
+
+
+<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.javafxproject.CadastroCarroController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Cadastar novos carros" />
+    </VBox>
+
+    <HBox spacing="20.0"> 
+        <VBox>
+
+            <VBox  spacing="20.0">
+                <Label text="Conservação:" />
+            </VBox>
+            <ComboBox fx:id="cboConservacao" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Novo" />
+                        <String fx:value="Semi-novo" />
+                        <String fx:value="Usado" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Label text="Cidade" />
+            <TextField fx:id="txfCidade" />
+
+            <Label text="Estado" />
+            <TextField fx:id="txfEstado" />
+
+            <Label text="Placa" />
+            <TextField fx:id="txfPlaca" />
+
+            <Label text="Ano" />
+            <TextField fx:id="txfAno" />
+
+            <Label text="Fabricante" />
+            <TextField fx:id="txfFabricante" />
+        </VBox>
+
+        <VBox>
+            <VBox spacing="20.0">
+                <Label text="Categoria:" />
+            </VBox>
+
+            <ComboBox fx:id="cboCategoria" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Sedan" />
+                        <String fx:value="Hatch" />
+                        <String fx:value="SUV" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <VBox spacing="20.0">
+                <Label text="Marca:" />
+            </VBox>
+
+            <ComboBox fx:id="cboMarca" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Citroën" />
+                        <String fx:value="Chevrolet" />
+                        <String fx:value="Fiat" />
+                        <String fx:value="Ford" />
+                        <String fx:value="Honda" />
+                        <String fx:value="Peugeot" />
+                        <String fx:value="Renault" />
+                        <String fx:value="Toyota" />
+                        <String fx:value="Volkswagen" />
+                        <String fx:value="Ferrari" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+
+            <Label text="Modelo" />
+            <TextField fx:id="txfModelo" />
+            
+            <Label text="Cor" />
+            <TextField fx:id="txfCor" />
+
+            <VBox  spacing="20.0">
+                <Label text="Direção:" />
+            </VBox>
+
+            <ComboBox fx:id="cboDirecao" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Automático" />
+                        <String fx:value="Manual" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </VBox>
+    </HBox>
+    
+    <VBox alignment="CENTER_RIGHT" spacing="20.0">
+        <Button text="Concluir" onAction="#onActionCadastrarcarronovo" />
+    </VBox>
+
+</VBox>
