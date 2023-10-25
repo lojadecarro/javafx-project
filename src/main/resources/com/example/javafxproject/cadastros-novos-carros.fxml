@@ -17,55 +17,71 @@ fx:controller="com.example.javafxproject.CadastrarNovosCarros">
         <Label text="Cadastar novos carros" />
     </VBox>
 
-    <Label text="Cidade" />
-    <TextField fx:id="txfCidade" />
+    <HBox spacing="20.0"> 
+        <VBox>
+            <Label text="Cidade" />
+            <TextField fx:id="txfCidade" />
 
-    <Label text="Estado" />
-    <TextField fx:id="txfEstado" />
+            <Label text="Estado" />
+            <TextField fx:id="txfEstado" />
 
-    <Label text="Placa" />
-    <TextField fx:id="txfPlaca" />
+            <Label text="Placa" />
+            <TextField fx:id="txfPlaca" />
 
-    <Label text="Ano" />
-    <TextField fx:id="txfAno" />
+            <Label text="Ano" />
+            <TextField fx:id="txfAno" />
 
-    <Label text="Fabricante" />
-    <TextField fx:id="txfFabricante" />
+            <Label text="Fabricante" />
+            <TextField fx:id="txfFabricante" />
+        </VBox>
 
+        <VBox>
+            <VBox alignment="CENTER" spacing="20.0">
+                <Label text="Insira a categoria:" />
+            </VBox>
 
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Insira a categoria:" />
-    </VBox>
+            <!-- <ComboBox fx:id="cboModelo" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Sedan" />
+                        <String fx:value="Hatch" />
+                        <String fx:value="SUV" />
+                    </FXCollections>
+                </items>
+            </ComboBox> -->
+
+            <ComboBox fx:id="fruitCombo" layoutX="15.0" layoutY="33.0" prefWidth="90.0" promptText="choose">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Apple" />
+                        <String fx:value="Orange" />
+                        <String fx:value="Pear" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+            
+            <!-- <CheckBox text="Sedan" fx:id="ckbSedan" />
+            <CheckBox text="Hatch" fx:id="ckbHatch" />
+            <CheckBox text="Suv" fx:id="ckbSuv" /> -->
+
+            <Label text="Marca" />
+            <TextField fx:id="txfMarca" />
+
+            <Label text="Modelo" />
+            <TextField fx:id="txfModelo" />
+            
+            <Label text="Cor" />
+            <TextField fx:id="txfCor" />
+
+            <VBox alignment="CENTER" spacing="20.0">
+                <Label text="Insira a direção:" />
+            </VBox>
+
+            <CheckBox text="Automático" fx:id="ckbAutomatico" />
+            <CheckBox text="Manual" fx:id="ckbManual" />
+        </VBox>
+    </HBox>
     
-    <CheckBox text="Sedan" fx:id="ckbSedan" />
-    <CheckBox text="Hatch" fx:id="ckbHatch" />
-    <CheckBox text="Suv" fx:id="ckbSuv" />
-
-    <Label text="Marca" />
-    <TextField fx:id="txfMarca" />
-
-    <Label text="Modelo" />
-    <TextField fx:id="txfModelo" />
-    
-    <Label text="Cor" />
-    <TextField fx:id="txfCor" />
-
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Insira a direção:" />
-    </VBox>
-
-    <ComboBox prefWidth="150.0">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="Teste 1" />
-                <String fx:value="teste 2" />
-            </FXCollections>
-        </items>
-    </ComboBox> 
-
-    <CheckBox text="Automático" fx:id="ckbAutomatico" />
-    <CheckBox text="Manual" fx:id="ckbManual" />
-
     <VBox alignment="CENTER_RIGHT" spacing="20.0">
         <Button text="Concluir" onAction="#onActionCadastrarcarronovo" />
     </VBox>
