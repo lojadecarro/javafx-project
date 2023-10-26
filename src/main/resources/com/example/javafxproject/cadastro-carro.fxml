@@ -93,10 +93,10 @@ fx:controller="com.example.javafxproject.CadastroCarroController">
             <TextField fx:id="txfCor" />
 
             <VBox  spacing="20.0">
-                <Label text="Direção:" />
+                <Label text="Transmissão:" />
             </VBox>
 
-            <ComboBox fx:id="cboDirecao" prefWidth="150.0">
+            <ComboBox fx:id="cboTransmissao" prefWidth="150.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Automático" />

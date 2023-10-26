@@ -27,7 +27,7 @@ public class CadastroCarroController {
     @FXML
     private TextField txfCor;
     @FXML
-    private ComboBox<String> cboDirecao;
+    private ComboBox<String> cboTransmissao;
 
     public void onActionCadastrarcarronovo() {
         String conservacao = cboConservacao.getValue();
@@ -40,7 +40,7 @@ public class CadastroCarroController {
         String marca = cboMarca.getValue();
         String modelo = txfModelo.getText();
         String cor = txfCor.getText();
-        String direcao = cboDirecao.getValue();
+        String transmissao = cboTransmissao.getValue();
 
         System.out.println(conservacao);
         System.out.println(cidade);
@@ -52,6 +52,6 @@ public class CadastroCarroController {
         System.out.println(marca);
         System.out.println(modelo);
         System.out.println(cor);     
-        System.out.println(direcao);
+        System.out.println(transmissao);
     }
 }

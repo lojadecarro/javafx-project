@@ -3,20 +3,34 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
 <?import java.net.*?>
+<?import java.lang.String?>
 
 
 <VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-fx:controller="com.example.javafxproject.CadastroVendedorController">
+fx:controller="com.example.javafxproject.CadastroFuncionarioController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
     <VBox styleClass= "root" alignment="CENTER" spacing="20.0">
-        <Label styleClass="titulo" text="Cadastro Vendedor" />
+        <Label styleClass="titulo" text="Cadastro Funcionário" />
         <Label text="Utilize o formulário abaixo para realizar o cadastro:" />
     </VBox>
 
+    <VBox  spacing="20.0">
+                <Label text="Cargo:" />
+            </VBox>
+            <ComboBox fx:id="cboCargo" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Manutenção/Limpeza" />
+                        <String fx:value="Vendedor" />
+                        <String fx:value="Gerente" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
 
     <Label text="Nome" />
     <TextField fx:id="txfNome" />

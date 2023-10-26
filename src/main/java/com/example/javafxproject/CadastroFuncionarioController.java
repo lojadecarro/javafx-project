@@ -1,10 +1,12 @@
 package com.example.javafxproject;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ComboBox;
 
-public class CadastroVendedorController {
+public class CadastroFuncionarioController {
+    @FXML
+    private ComboBox<String> cboCargo;
     @FXML
     private TextField txfNome;
     @FXML
@@ -18,12 +20,14 @@ public class CadastroVendedorController {
     
     
     public void onActionCadastrar() {
+        String cargo = cboCargo.getValue();
         String nome = txfNome.getText();
         String sobrenome = txfSobrenome.getText();
         String cpf = txfCPF.getText();
         String email = txfEmail.getText();
         String telefone = txfTelefone.getText();
 
+        System.out.println(cargo);
         System.out.println(nome);
         System.out.println(sobrenome);
         System.out.println(cpf);
