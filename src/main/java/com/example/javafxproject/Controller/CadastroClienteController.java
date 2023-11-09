@@ -1,4 +1,4 @@
-package com.example.javafxproject;
+package com.example.javafxproject.Controller;
 
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
