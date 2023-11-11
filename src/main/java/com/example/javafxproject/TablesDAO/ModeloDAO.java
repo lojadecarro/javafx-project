@@ -1,7 +1,7 @@
 package com.example.javafxproject.TablesDAO;
 
-import Tables.Marca;
-import Tables.Modelo;
+import com.example.javafxproject.Tables.Marca;
+import com.example.javafxproject.Tables.Modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import Conexao.Conexao;
+import com.example.javafxproject.Conexao.Conexao;
 
 public class ModeloDAO {
     public Modelo create(Modelo modelo) throws SQLException{

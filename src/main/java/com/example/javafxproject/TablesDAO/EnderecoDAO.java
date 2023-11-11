@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Conexao.Conexao;
-import Tables.Endereco;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Endereco;
 
 public class EnderecoDAO {
     public Endereco create(Endereco endereco) throws SQLException {

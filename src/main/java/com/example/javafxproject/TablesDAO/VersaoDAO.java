@@ -9,10 +9,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import Conexao.Conexao;
-import Tables.CategoriaCarro;
-import Tables.Modelo;
-import Tables.Versao;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.CategoriaCarro;
+import com.example.javafxproject.Tables.Modelo;
+import com.example.javafxproject.Tables.Versao;
 
 public class VersaoDAO {
     public Versao create(Versao versao) throws SQLException{

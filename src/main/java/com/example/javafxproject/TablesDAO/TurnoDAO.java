@@ -9,8 +9,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import Conexao.Conexao;
-import Tables.Turno;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Turno;
 
 public class TurnoDAO {
     public Turno create(Turno turno) throws SQLException {

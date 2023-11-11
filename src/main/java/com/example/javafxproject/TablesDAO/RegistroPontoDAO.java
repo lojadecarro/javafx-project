@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
-import Conexao.Conexao;
-import Tables.Advertencia;
-import Tables.RegistroPonto;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Advertencia;
+import com.example.javafxproject.Tables.RegistroPonto;
 
 
 public class RegistroPontoDAO {

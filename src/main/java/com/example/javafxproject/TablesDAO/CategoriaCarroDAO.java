@@ -1,12 +1,12 @@
 package com.example.javafxproject.TablesDAO;
 
-import Tables.CategoriaCarro;
+import com.example.javafxproject.Tables.CategoriaCarro;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Conexao.Conexao;
+import com.example.javafxproject.Conexao.Conexao;
 
 public class CategoriaCarroDAO {
     public CategoriaCarro create(CategoriaCarro categoriaCarro) throws SQLException {

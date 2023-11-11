@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Conexao.Conexao;
-import Tables.Cliente;
-import Tables.Endereco;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Cliente;
+import com.example.javafxproject.Tables.Endereco;
 
 public class ClienteDAO {
     public Cliente create(Cliente cliente) throws SQLException{

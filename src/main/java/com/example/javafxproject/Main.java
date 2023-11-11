@@ -1,7 +1,10 @@
+package com.example.javafxproject;
+
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import Conexao.Conexao;
+import com.example.javafxproject.Conexao.Conexao;
 
 //import org.mariadb.jdbc.Connection;
 

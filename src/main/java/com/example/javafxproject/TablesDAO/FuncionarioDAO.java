@@ -11,11 +11,11 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import Conexao.Conexao;
-import Tables.Cargo;
-import Tables.Endereco;
-import Tables.Funcionario;
-import Tables.Turno;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Cargo;
+import com.example.javafxproject.Tables.Endereco;
+import com.example.javafxproject.Tables.Funcionario;
+import com.example.javafxproject.Tables.Turno;
 
 public class FuncionarioDAO {
     public Funcionario create(Funcionario funcionario) throws SQLException{

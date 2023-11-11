@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import Conexao.Conexao;
-import Tables.Cargo;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Cargo;
 
 // DAO = Data Access Object
 public class CargoDAO {

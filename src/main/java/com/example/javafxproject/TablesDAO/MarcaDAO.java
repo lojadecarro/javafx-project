@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Conexao.Conexao;
-import Tables.Marca;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Marca;
 
 public class MarcaDAO {
     public Marca create(Marca marca) throws SQLException{

@@ -8,12 +8,12 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Conexao.Conexao;
-import Tables.Cor;
-import Tables.EstadoConservacao;
-import Tables.Transmissao;
-import Tables.Unidade;
-import Tables.Versao;
+import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.Tables.Cor;
+import com.example.javafxproject.Tables.EstadoConservacao;
+import com.example.javafxproject.Tables.Transmissao;
+import com.example.javafxproject.Tables.Unidade;
+import com.example.javafxproject.Tables.Versao;
 
 public class UnidadeDAO {
     public Unidade create(Unidade unidade) throws SQLException {

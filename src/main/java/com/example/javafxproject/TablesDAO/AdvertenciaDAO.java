@@ -1,12 +1,12 @@
 package com.example.javafxproject.TablesDAO;
 
-import Conexao.Conexao;
+import com.example.javafxproject.Conexao.Conexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import Tables.Advertencia;
-import Tables.Funcionario;
+import com.example.javafxproject.Tables.Advertencia;
+import com.example.javafxproject.Tables.Funcionario;
 
 public class AdvertenciaDAO {
     public Advertencia create(Advertencia advertencia) throws SQLException {

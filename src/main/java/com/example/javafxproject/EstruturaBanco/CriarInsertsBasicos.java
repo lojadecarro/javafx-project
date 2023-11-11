@@ -3,7 +3,7 @@ package com.example.javafxproject.EstruturaBanco;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import Conexao.Conexao;
+import com.example.javafxproject.Conexao.Conexao;
 
 /*
 Esta classe cria inserts para as tabelas que possuem registros que dificilmente serão mudados
