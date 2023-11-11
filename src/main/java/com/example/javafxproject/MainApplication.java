@@ -1,4 +1,4 @@
-package com.example.javafxproject.Controller;
+package com.example.javafxproject;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cadastro-carro.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("cadastro-cliente.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Aplicação");
