@@ -15,12 +15,11 @@ fx:controller="com.example.javafxproject.Controller.CadastroCarroController">
     </padding>
 
     <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Cadastar novos carros" />
+        <Label text="Cadastar Carros" />
     </VBox>
 
     <HBox spacing="20.0"> 
         <VBox>
-
             <VBox  spacing="20.0">
                 <Label text="Conservação:" />
             </VBox>

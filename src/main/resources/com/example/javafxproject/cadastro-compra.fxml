@@ -9,16 +9,16 @@
 
 
 <VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
+fx:controller="com.example.javafxproject.Controller.CadastroCompraController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
     <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Cadastar novas vendas" />
+        <Label text="Cadastar Compras" />
     </VBox>
 
-    <HBox spacing="20.0"> 
+    <HBox spacing="20.0">
         <VBox>
             <VBox  spacing="20.0">
                 <Label text="Funcionário:" />
@@ -61,40 +61,10 @@ fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
                     </FXCollections>
                 </items>
             </ComboBox>
-
-            <Label text="Data(ano, mes, dia, hora, minuto)" />
-            <TextField fx:id="txfDiaHorario" />
-        </VBox>
-
-
-        <VBox>
-            <VBox  spacing="20.0">
-                <Label text="Forma de pagamento:" />
-            </VBox>
-            <ComboBox fx:id="cboFormaDePagamento" prefWidth="150.0">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Débito" />
-                        <String fx:value="Crédito à vista" />
-                        <String fx:value="Crédito parcelado" />
-                        <String fx:value="Pix" />
-                        <String fx:value="Boleto" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
-            <Label text="Desconto" />
-            <TextField fx:id="txfDesconto" />
-
-            <Label text="Parcelas" />
-            <TextField fx:id="txfParcelas" />
-
-            <Label text="Juros" />
-            <TextField fx:id="txfJuros" />
         </VBox>
     </HBox>
-    
+
     <VBox alignment="CENTER_RIGHT" spacing="20.0">
-        <Button text="Concluir" onAction="#onActionCadastrarvendanova" />
+        <Button text="Concluir" onAction="#onActionCadastrarcompranova" />
     </VBox>
 </VBox>

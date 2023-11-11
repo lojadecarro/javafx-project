@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.util.*?>
+<?import java.lang.String?>
+
+
+<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+fx:controller="com.example.javafxproject.Controller.CadastroTestDriveController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <VBox alignment="CENTER" spacing="20.0">
+        <Label text="Agendar Test-Drive" />
+    </VBox>
+
+    <Label text="Início(ano, mes, dia, hora, minuto)" />
+    <TextField fx:id="txfInicio" />
+
+    <Label text="Fim(ano, mes, dia, hora, minuto)" />
+    <TextField fx:id="txfFim" />
+
+    <VBox  spacing="20.0">
+        <Label text="Cliente:" />
+    </VBox>
+    <ComboBox fx:id="cboCliente" prefWidth="150.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Trô" />
+                <String fx:value="Rodrigo" />
+                <String fx:value="Paulo" />
+                <String fx:value="Letícia" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <VBox  spacing="20.0">
+        <Label text="Funcionário:" />
+    </VBox>
+    <ComboBox fx:id="cboFuncionario" prefWidth="150.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="João" />
+                <String fx:value="Pedro" />
+                <String fx:value="Guilherme" />
+                <String fx:value="Mateus" />
+                <String fx:value="Arthur" />
+                <String fx:value="Alexandre" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <VBox  spacing="20.0">
+        <Label text="Unidade:" />
+    </VBox>
+    <ComboBox fx:id="cboUnidade" prefWidth="150.0">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Unidade 1" />
+                <String fx:value="Unidade 2" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <VBox alignment="CENTER_RIGHT" spacing="20.0">
+        <Button text="Concluir" onAction="#onActionAgendartestdrive" />
+    </VBox>
+</VBox>

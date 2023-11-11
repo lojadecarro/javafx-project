@@ -30,8 +30,8 @@ public class CadastroFuncionarioController {
         System.out.println(cargo);
         System.out.println(nome);
         System.out.println(sobrenome);
-        System.out.println(cpf);
         System.out.println(email);
+        System.out.println(cpf);
         System.out.println(telefone);
     }
     
