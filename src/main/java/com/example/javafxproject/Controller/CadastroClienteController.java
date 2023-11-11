@@ -30,15 +30,15 @@ public class CadastroClienteController {
         String email = txfEmail.getText();
         String telefone = txfTelefone.getText();
 
-        ClienteDAO clienteDao = new ClienteDAO();
+        //ClienteDAO clienteDao = new ClienteDAO();
 
-        Endereco endereco = new Endereco("Rua Jaragua", (short) 13,"AP10", "01129888");
-        Cliente cliente = new Cliente(nome, email, telefone, cpf, LocalDate.of(1990, 5, 15), endereco);
+        //Endereco endereco = new Endereco("Rua Jaragua", (short) 13,"AP10", "01129888");
+        // Cliente cliente = new Cliente(nome, email, telefone, cpf, LocalDate.of(1990, 5, 15), endereco);
 
-        Cliente clienteCriado = clienteDao.create(cliente);
+        // Cliente clienteCriado = clienteDao.create(cliente);
 
         System.out.println(nome + "\n" + cpf + "\n" + sobrenome + "\n" + email + "\n" + telefone);
-        System.out.println(clienteCriado.getId());
+        // System.out.println(clienteCriado.getId());
     }
 
 }
