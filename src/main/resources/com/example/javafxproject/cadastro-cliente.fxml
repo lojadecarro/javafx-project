@@ -2,7 +2,8 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.VBox?>
+<!-- <?import javafx.scene.layout.VBox?> -->
+<?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
 <VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
@@ -16,21 +17,35 @@ fx:controller="com.example.javafxproject.Controller.CadastroClienteController">
         <Label text="Utilize para realizar seu cadastro cliente:" />
     </VBox>
 
-    <Label text="Nome" />
-    <TextField fx:id="txfNome"/>
-    
-    <Label text="Sobrenome" />
-    <TextField fx:id="txfSobrenome"/>
+    <HBox spacing="20.0">
+        <VBox>
+            <Label text="Nome completo" />
+            <TextField fx:id="txfNomeCompleto"/>
 
-    <Label text="CPF" />
-    <TextField fx:id="txfCPF"/>
+            <Label text="CPF" />
+            <TextField fx:id="txfCPF"/>
 
-    <Label text="Email" />
-    <TextField fx:id="txfEmail"/>
+            <Label text="Email" />
+            <TextField fx:id="txfEmail"/>
 
-    <Label text="Telefone" />
-    <TextField fx:id="txfTelefone"/>
+            <Label text="Telefone" />
+            <TextField fx:id="txfTelefone"/>
+        </VBox>
 
+        <VBox>
+            <Label text="Logradouro" />
+            <TextField fx:id="txfLogradouro"/>
+
+            <Label text="Número" />
+            <TextField fx:id="txfNumero"/>
+
+            <Label text="Complemento" />
+            <TextField fx:id="txfComplemento"/>
+
+            <Label text="CEP" />
+            <TextField fx:id="txfCEP"/>
+        </VBox>
+    </HBox>
 
     <VBox alignment="CENTER_RIGHT" spacing="20.0" >
         <Button styleClass= "botao" text="Cadastrar Cliente" onAction="#onActionCadastrarCliente" />

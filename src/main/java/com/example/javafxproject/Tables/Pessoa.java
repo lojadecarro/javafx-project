@@ -52,7 +52,7 @@ public abstract class Pessoa {
         return contato;
     }
 
-    public long getIdade() {
+    public double getIdade(LocalDate data_nascimento) {
         return ChronoUnit.YEARS.between(data_nascimento, LocalDate.now());
     }
 
@@ -70,7 +70,7 @@ public abstract class Pessoa {
         StringBuilder nomeFormatado = new StringBuilder();
 
         for (String palavra : palavras) {
-            if (!palavra.matches("^\\p{L}çÇ+")) {
+            if (!palavra.matches("^[a-zA-ZçÇ]+$")) {
                 throw new RuntimeException("Um nome deve possuir apenas letras.");
             }
 
@@ -122,7 +122,7 @@ public abstract class Pessoa {
     }
 
     private void verificarIdade(LocalDate data_nascimento){
-        if (getIdade() < 18) {
+        if (getIdade(data_nascimento) < 18) {
             throw new RuntimeException("Somente maiores de 18 anos podem se registrar.");
         }
         this.data_nascimento = data_nascimento;

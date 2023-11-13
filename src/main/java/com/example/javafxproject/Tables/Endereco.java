@@ -47,12 +47,12 @@ public class Endereco {
         StringBuilder logradouroFormatado = new StringBuilder();
         String[] palavrasLogradouro = logradouro.split(" ");
 
-        if (!logradouro.matches("^[a-zA-Z]+ [\\p{L}çÇ ]+$") || logradouro.length() > 200) {
+        if (!logradouro.matches("^[a-zA-Zç ]+$") || logradouro.length() > 200) {
             throw new RuntimeException("O logradouro de um endereço deve ter o tipo e o nome do logradouro formados por apenas letras.");
         }
 
         for (String palavra : palavrasLogradouro) {
-            if (!palavra.matches("^\\p{L}çÇ+")) {
+            if (!palavra.matches("^[a-zA-Zç ]+$")) {
                 throw new RuntimeException("O logradouro deve possuir apenas letras");
             }
 
@@ -80,11 +80,11 @@ public class Endereco {
             return;
         }
 
-        if ((!complemento.matches("^[\\p{L}çÇ+ [\\dA-Z]+]+$") || complemento.length() > 100) && complemento != null) {
+        if ((!complemento.matches("^([a-zA-Z]+\\s\\d+)+$") || complemento.length() > 100) && complemento != null) {
             throw new RuntimeException("O complemento deve ter a forma de subdivisão do local do endereço e o nome da subdivisão. Caso tenha mais de uma subdivisão, coloque da maior para a menor.");
         }
 
-        complemento = complemento.substring(0, 1).toUpperCase() + complemento.substring(1).toLowerCase();
+        //complemento = complemento.substring(0, 1).toUpperCase() + complemento.substring(1).toLowerCase();
 
         this.complemento = complemento;
     }
