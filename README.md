@@ -1,5 +1,24 @@
-# JavaFX Project
-Projeto JavaFX de exemplo usando Maven.
+# Projeto Loja de Carros
+
+Bem-vindo ao repositório do projeto de Loja de Carros! Este é um projeto colaborativo de um grupo de amigos interessados em criar um banco de dados para uma loja de carros e desenvolver algumas interfaces gráficas usando JavaFX e Maven.
+
+## Objetivos
+
+O objetivo deste projeto é criar um sistema de banco de dados eficiente para uma loja de carros, onde poderemos armazenar informações sobre veículos, clientes, vendas, e muito mais. Além disso, implementamos interfaces gráficas amigáveis usando JavaFX para interagir com o banco de dados.
+
+## Tecnologias Utilizadas
+
+- Java
+- JavaFX
+- Banco de dados MySQL/MariaDB
+- Maven
+
+## Estrutura do Repositório
+
+O repositório está organizado da seguinte maneira:
+
+- `src/main/java/com/example/javafxproject/Controller`: Contém os arquivos fonte Java para a implementação das telas JavaFX e a lógica do sistema.
+- `src/main/java/com/example/javafxproject/EstruturaBanco`: Contém scripts SQL para criação e manutenção do banco de dados.
 
 ## Como executar
 
@@ -23,3 +42,16 @@ No mesmo terminal que foi configurado o proxy executar o comando:
 ```bash
 ./mvnw javafx:run
 ```
+
+## Contatos
+
+Se você tiver alguma pergunta ou precisar de ajuda, não hesite em entrar em contato com os membros deste projeto:
+
+- [Tro Armen](https://github.com/troarmen)
+- [Rodrigo Mariano](https://github.com/Rodriomariano)
+- [Letícia Brandão](https://github.com/lleleal)
+- [Paulo Henrique](https://github.com/paulohernrique)
+
+Esse é o sistema da nossa loja de carros, desenvolvido na matéria de LP1 no IFSP!
+
+
