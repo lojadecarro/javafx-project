@@ -15,7 +15,7 @@ fx:controller="com.example.javafxproject.Controller.CadastroFuncionarioControlle
     </padding>
 
     <VBox styleClass= "root" alignment="CENTER" spacing="20.0">
-        <Label styleClass="titulo" text="Cadastro Funcionário" />
+        <Label styleClass="titulo" text="Cadastrar Funcionário" />
         <Label text="Utilize o formulário abaixo para realizar o cadastro:" />
     </VBox>
 

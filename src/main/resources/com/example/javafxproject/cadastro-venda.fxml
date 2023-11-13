@@ -6,6 +6,7 @@
 <?import javafx.collections.FXCollections?>
 <?import java.util.*?>
 <?import java.lang.String?>
+<?import java.net.*?>
 
 
 <VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
@@ -14,8 +15,8 @@ fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 
-    <VBox alignment="CENTER" spacing="20.0">
-        <Label text="Cadastar novas vendas" />
+    <VBox styleClass= "root" alignment="CENTER" spacing="20.0">
+        <Label styleClass="titulo" text="Cadastrar Nova Venda" />
     </VBox>
 
     <HBox spacing="20.0"> 
@@ -75,9 +76,9 @@ fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Débito" />
-                        <String fx:value="Crédito à vista" />
-                        <String fx:value="Crédito parcelado" />
-                        <String fx:value="Pix" />
+                        <String fx:<stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>:value="Pix" />
                         <String fx:value="Boleto" />
                     </FXCollections>
                 </items>
@@ -95,6 +96,11 @@ fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
     </HBox>
     
     <VBox alignment="CENTER_RIGHT" spacing="20.0">
-        <Button text="Concluir" onAction="#onActionCadastrarvendanova" />
+        <Button styleClass= "botao" text="Concluir" onAction="#onActionCadastrarvendanova" />
     </VBox>
+
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
 </VBox>

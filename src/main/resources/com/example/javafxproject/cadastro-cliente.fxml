@@ -13,7 +13,7 @@ fx:controller="com.example.javafxproject.Controller.CadastroClienteController">
     </padding>
 
     <VBox styleClass= "root" alignment="CENTER" spacing="20.0" >
-        <Label styleClass="titulo" text="Cadastro Cliente" />
+        <Label styleClass="titulo" text="Cadastrar Cliente" />
         <Label text="Utilize para realizar seu cadastro cliente:" />
     </VBox>
 
