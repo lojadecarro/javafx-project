@@ -19,6 +19,7 @@ O repositório está organizado da seguinte maneira:
 
 - `src/main/java/com/example/javafxproject/Controller`: Contém os arquivos fonte Java para a implementação das telas JavaFX e a lógica do sistema.
 - `src/main/java/com/example/javafxproject/EstruturaBanco`: Contém scripts SQL para criação e manutenção do banco de dados.
+- `src/main/resources/com/example/javafxproject`: Contém todos os scripts das telas em FXML
 
 ## Como executar
 
