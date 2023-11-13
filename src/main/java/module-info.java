@@ -4,6 +4,7 @@ module com.example.javafxproject {
     requires java.sql;
     requires org.mariadb.jdbc;
     requires transitive javafx.graphics;
+    requires org.controlsfx.controls;
 
     opens com.example.javafxproject to javafx.fxml;
     opens com.example.javafxproject.Controller to javafx.fxml;
