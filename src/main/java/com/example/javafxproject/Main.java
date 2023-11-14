@@ -5,6 +5,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import com.example.javafxproject.Conexao.Conexao;
+import com.example.javafxproject.EstruturaBanco.CriarInsertsBasicos;
+import com.example.javafxproject.EstruturaBanco.CriarTabelas;
+import com.example.javafxproject.EstruturaBanco.RemoverTodasTabelas;
 
 //import org.mariadb.jdbc.Connection;
 
@@ -16,5 +19,8 @@ public class Main {
         } else {
             System.out.println("Connection failed.");
         }
+        // RemoverTodasTabelas.remover();
+        // CriarTabelas.criar();
+        CriarInsertsBasicos.criar();
     }
 }

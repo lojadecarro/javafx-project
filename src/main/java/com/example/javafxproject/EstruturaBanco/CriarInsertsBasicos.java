@@ -14,7 +14,7 @@ para serem relacionados na hora do registro de entidades mais complexas.
 */
 
 public class CriarInsertsBasicos {
-    public void criar() throws SQLException {
+    public static void criar() throws SQLException {
         String sqlMarca = """
             insert into marca (nome) values
             ('Chevrolet'),
@@ -299,6 +299,8 @@ public class CriarInsertsBasicos {
             statement.executeUpdate(sqlCargo);
             statement.executeUpdate(sqlForma_pagamento);
             statement.executeUpdate(sqlTurno);
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

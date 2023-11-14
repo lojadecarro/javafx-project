@@ -6,7 +6,7 @@ import java.sql.Statement;
 import com.example.javafxproject.Conexao.Conexao;
 
 public class RemoverTodasTabelas {
-    public void remover() throws SQLException{
+    public static void remover() throws SQLException{
         String removerSeExisteCompra = """
             drop table if exists compra;        
         """;
@@ -104,6 +104,8 @@ public class RemoverTodasTabelas {
             statement.executeUpdate(removerSeExisteCargo);
             statement.executeUpdate(removerSeExisteForma_pagamento);
             statement.executeUpdate(removerSeExisteEndereco);            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }

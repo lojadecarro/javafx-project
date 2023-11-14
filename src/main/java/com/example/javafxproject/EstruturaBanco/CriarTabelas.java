@@ -6,7 +6,7 @@ import java.sql.Statement;
 import com.example.javafxproject.Conexao.Conexao;
 
 public class CriarTabelas {
-    public void criar() throws SQLException {
+    public static void criar() throws SQLException {
         String sqlMarca = """
             create table marca(
                 id int auto_increment,
@@ -261,6 +261,8 @@ public class CriarTabelas {
             statement.executeUpdate(sqlVenda);
             statement.executeUpdate(sqlAdvertencia);
             statement.executeUpdate(sqlRegistro_ponto);            
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
