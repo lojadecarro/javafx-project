@@ -112,6 +112,30 @@ public class TurnoDAO {
         return null;
     }
 
+    public static List<Turno> listarTurnos() {
+        String sql = "SELECT * FROM turno;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            List<Turno> turnos = new ArrayList<>();
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Turno turno = resultSetToTurno(rs);
+                turnos.add(turno);
+            }
+
+            rs.close();
+            return turnos;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List<Turno> findByInicio(LocalTime inicioTurno) {
         List<Turno> turnos = new ArrayList<>();
         Time minimoFaixaBusca = Time.valueOf(inicioTurno.minusMinutes(10));

@@ -1,11 +1,8 @@
 package com.example.javafxproject.Tables;
 
-import java.util.List;
-
 public class Cargo {
     private int id;
     private String nome;
-    private List<Funcionario> funcionarios;
 
     public Cargo(int id, String nome) {
         Verificacoes.verificarParametroNull(id, nome);
@@ -16,10 +13,6 @@ public class Cargo {
     public Cargo(String nome) {
         Verificacoes.verificarParametroNull(nome);
         setNome(nome);
-    }
-    
-    public void addFuncionario(Funcionario funcionario){
-        funcionarios.add(funcionario);
     }
 
     public int getId() {
@@ -34,7 +27,7 @@ public class Cargo {
         String[] palavras = nome.split(" ");
         StringBuilder nomeFormatadodo = new StringBuilder();
 
-        if (nome.length() > 40 || nome.length() < 4 || !nome.matches("[a-zA-Z ]+")) {
+        if (nome.length() > 40 || nome.length() < 4 || !nome.matches("^[\\p{L} ]+$")) {
             throw new RuntimeException("Um cargo deve ter apenas letras sem acentos e possuir um tamanho entre 2 e 40.");
         }
         

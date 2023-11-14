@@ -29,13 +29,13 @@ public class Funcionario extends Pessoa{
         Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
+        setDuracaoIntervalosMinutos(duracaoIntervalosMinutos);
         adicionarIntervalo(intervalo);
         setCargo(cargo);
         setTurno(turno);
         disponivel = false;
         comissao = 0;
         horasDeTrabalhoDeDiferenca = 0;
-        cargo.addFuncionario(this);
 
         /*
         executa um metodo todo dia automaticamente, no caso o ajustarDia_pagamento para caso houver
@@ -48,17 +48,18 @@ public class Funcionario extends Pessoa{
         scheduler2.scheduleAtFixedRate(this::terminarPeriodoDePagamento, 0, 1, TimeUnit.DAYS);
     }
 
-    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, LocalTime intervalo, Cargo cargo, Turno turno){
+    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo, Cargo cargo, Turno turno){
         super(nome, email, contato, cpf, data_nascimento, endereco);
         Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
+        setDuracaoIntervalosMinutos(duracaoIntervalosMinutos);
+        adicionarIntervalo(intervalo);
         setCargo(cargo);
         setTurno(turno);
         disponivel = false;
         comissao = 0;
         horasDeTrabalhoDeDiferenca = 0;
-        cargo.addFuncionario(this);
 
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
         scheduler.scheduleAtFixedRate(this::ajustarDia_pagamento, 0, 1, TimeUnit.DAYS);

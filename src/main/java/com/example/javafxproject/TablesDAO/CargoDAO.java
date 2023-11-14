@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Cargo;
+
 
 // DAO = Data Access Object
 public class CargoDAO {
@@ -105,6 +108,29 @@ public class CargoDAO {
 
         return null;
     }
+
+    public static List<Cargo> listarCargos() {
+        String sql = "SELECT * FROM cargo;";
+    
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+        ) {
+            List<Cargo> cargos = new ArrayList<>();
+    
+            while (rs.next()) {
+                Cargo cargo = resultSetToCargo(rs);
+                cargos.add(cargo);
+            }
+    
+            return cargos;
+    
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }    
 
     protected static Cargo resultSetToCargo(ResultSet rs) throws SQLException {
         return new Cargo(

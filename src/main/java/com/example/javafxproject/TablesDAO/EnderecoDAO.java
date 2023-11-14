@@ -12,7 +12,7 @@ public class EnderecoDAO {
     public Endereco create(Endereco endereco) throws SQLException {
         String sql = """
         INSERT INTO endereco (logradouro, numero, complemento, cep) 
-        VALUES (?, ?, ?, ?);"
+        VALUES (?, ?, ?, ?)
         """;
 
         try (
