@@ -20,6 +20,11 @@ fx:controller="com.example.javafxproject.Controller.PrincipalController">
         <Button styleClass= "botao" text="Cadastro Carro" onAction="#onActionCadastrarCarro" />
         <Button styleClass= "botao" text="Cadastro Compra" onAction="#onActionCadastrarCompra" />
         <Button styleClass= "botao" text="Cadastro Cliente" onAction="#onActionCadastrarCliente" />
+        <Button styleClass= "botao" text="Cadastro Venda" onAction="#onActionCadastrarVenda" />
+        <Button styleClass= "botao" text="Cadastro Advertência" onAction="#onActionCadastrarAdvertencia" />
+        <Button styleClass= "botao" text="Cadastro Funcionário" onAction="#onActionCadastrarFuncionario" />
+        <Button styleClass= "botao" text="Cadastro Test-Drive" onAction="#onActionCadastrarTestDrive" />
+
     </VBox>
 
     <stylesheets>

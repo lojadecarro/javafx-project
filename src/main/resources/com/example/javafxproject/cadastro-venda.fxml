@@ -76,9 +76,8 @@ fx:controller="com.example.javafxproject.Controller.CadastroVendaController">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
                         <String fx:value="Débito" />
-                        <String fx:<stylesheets>
-        <URL value="@style.css" />
-    </stylesheets>:value="Pix" />
+                        <String fx:value="Crédito" />
+                        <String fx:value="Pix" />
                         <String fx:value="Boleto" />
                     </FXCollections>
                 </items>

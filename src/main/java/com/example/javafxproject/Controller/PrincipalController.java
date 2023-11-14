@@ -24,6 +24,26 @@ public class PrincipalController {
         abrirJanela("cadastro-cliente.fxml", "Cadastro de Cliente");
     }
 
+    @FXML
+    public void onActionCadastrarVenda()  throws IOException {
+        abrirJanela("cadastro-venda.fxml", "Cadastro de Venda");
+    }
+
+    @FXML
+    public void onActionCadastrarAdvertencia()  throws IOException {
+        abrirJanela("cadastro-advertencia.fxml", "Cadastro de Advertência");
+    }
+
+    @FXML
+    public void onActionCadastrarFuncionario()  throws IOException {
+        abrirJanela("cadastro-funcionario.fxml", "Cadastro de Funcionário");
+    }
+
+    @FXML
+    public void onActionCadastrarTestDrive()  throws IOException {
+        abrirJanela("cadastro-testdrive.fxml", "Cadastro de Test-Drive");
+    }
+
     // recebe nome arquivo e o titulo -> void criar janela
     private void abrirJanela(String nomeArquivo, String tituloJanela)  throws IOException {
         String file =  "/com/example/javafxproject/" + nomeArquivo;

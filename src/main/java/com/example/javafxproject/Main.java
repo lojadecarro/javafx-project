@@ -19,8 +19,9 @@ public class Main {
         } else {
             System.out.println("Connection failed.");
         }
-        // RemoverTodasTabelas.remover();
-        // CriarTabelas.criar();
+        
+        CriarTabelas.criar();
         CriarInsertsBasicos.criar();
+        // RemoverTodasTabelas.remover();
     }
 }
