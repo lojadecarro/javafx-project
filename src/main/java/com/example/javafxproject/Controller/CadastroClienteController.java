@@ -17,6 +17,8 @@ public class CadastroClienteController {
     @FXML
     private TextField txfCPF;
     @FXML
+    private DatePicker dtNascimento;
+    @FXML
     private TextField txfEmail;
     @FXML
     private TextField txfTelefone;
@@ -33,6 +35,7 @@ public class CadastroClienteController {
     public void onActionCadastrarCliente() throws SQLException{
         String nomeCompleto = txfNomeCompleto.getText();
         String cpf = txfCPF.getText();
+        LocalDate dataNascimento = dtNascimento.getValue();
         String email = txfEmail.getText();
         String telefone = txfTelefone.getText();
         String logradouro = txfLogradouro.getText();
@@ -44,10 +47,10 @@ public class CadastroClienteController {
         ClienteDAO clienteDao = new ClienteDAO();
 
         EnderecoDAO enderecoDao = new EnderecoDAO();
-        Endereco endereco = new Endereco(logradouro,(short) 12, complemento, cep);
+        Endereco endereco = new Endereco(logradouro, Short.valueOf(numero), complemento, cep);
         Endereco enderecoCriado = enderecoDao.create(endereco);
 
-        Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, LocalDate.of(1990, 05, 06), enderecoCriado);
+        Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, dataNascimento, enderecoCriado);
 
         Cliente clienteCriado = clienteDao.create(cliente);
 

@@ -2,7 +2,6 @@ package com.example.javafxproject.Controller;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
-//import org.controlsfx.control.TimePicker;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -107,6 +106,8 @@ public class CadastroFuncionarioController {
         Funcionario funcionario = new Funcionario(nomeCompleto, email, telefone, cpf, dataNascimento, enderecoCriado, Double.valueOf(salarioFixo), Short.valueOf(diaPagamento), duracaoIntervalo, intervalo, cargo, turno);
 
         Funcionario funcionarioCriado = funcionarioDao.create(funcionario);
+        System.out.println(funcionarioCriado.toString());
+        
        /* 
         System.out.println(nomeCompleto);
         System.out.println(email);

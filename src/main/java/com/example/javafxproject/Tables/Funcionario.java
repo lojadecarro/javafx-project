@@ -3,6 +3,7 @@ package com.example.javafxproject.Tables;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -346,5 +347,15 @@ public class Funcionario extends Pessoa{
 
     public Cargo getCargo() {
         return cargo;
+    }
+
+    @Override
+    public String toString() {
+        return "Funcionario [salario_fixo=" + salario_fixo + ", pagamentoDoMes=" + pagamentoDoMes + ", comissao="
+                + comissao + ", horasDeTrabalhoDeDiferenca=" + horasDeTrabalhoDeDiferenca + ", dia_pagamentoOriginal="
+                + dia_pagamentoOriginal + ", dia_pagamento=" + dia_pagamento + ", intervalos="
+                + Arrays.toString(intervalos) + ", duracaoIntervalosMinutos=" + duracaoIntervalosMinutos + ", cargo="
+                + cargo + ", turno=" + turno + ", disponivel=" + disponivel + ", advertencias=" + advertencias
+                + ", compras=" + compras + ", vendas=" + vendas + "]";
     }
 }

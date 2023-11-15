@@ -25,6 +25,9 @@ fx:controller="com.example.javafxproject.Controller.CadastroClienteController">
             <Label text="CPF" />
             <TextField fx:id="txfCPF"/>
 
+            <Label text="Data de nascimento" />
+            <DatePicker fx:id="dtNascimento" promptText="Selecionar data" />
+
             <Label text="Email" />
             <TextField fx:id="txfEmail"/>
 
