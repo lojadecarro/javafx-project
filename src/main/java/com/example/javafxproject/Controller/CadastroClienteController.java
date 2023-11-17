@@ -53,6 +53,9 @@ public class CadastroClienteController {
         Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, dataNascimento, enderecoCriado);
 
         Cliente clienteCriado = clienteDao.create(cliente);
+        
+        System.out.println(clienteCriado.toString());
+        System.out.println(clienteDao.findByCpf(cpf));
 
         //System.out.println(nome + "\n" + cpf + "\n" + sobrenome + "\n" + email + "\n" + telefone);
     }
