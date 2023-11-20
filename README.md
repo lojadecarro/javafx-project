@@ -23,15 +23,21 @@ O repositório está organizado da seguinte maneira:
 
 ## Como executar
 
-Fazer o clone do repositório.
+1. Fazer o clone do repositório.
+```bash
+git clone https://github.com/lojadecarro/javafx-project.git
+```
 
-Remover a pasta .git:
+<!-- Remover a pasta .git:
 ```bash
 rm -rf .git
 ```
 
-Iniciar um repositório git, fazer commits e enviar para o seu repositório remoto.
+Iniciar um repositório git, fazer commits e enviar para o seu repositório remoto. -->
 
+2. Após a clonagem, vá em `src/main/java/com/example/javafxproject/Conexao/Conexao.java`: é necessário comentar/descomentar os imports desnecessários/necessários para a sua máquina(vai depender se você está usando MariaDB ou MySQL). Modifique também a URL de acordo com seu servidor.
+
+3. Vá em `src/main/java/com/example/javafxproject/Main.java`: Este método testa a conexão com o servidor do banco de dados. Repita o que foi feito no passo 2. Ao final do método principal, você encontrará comandos para criar as tabelas, inserir valores e removê-las. É necessário criar as tabelas e realizar os inserts para que funcione normalmente.
 
 Nos laboratórios de informática do IFSP é necessário configurar o proxy para o funcionamento do maven:
 
@@ -43,6 +49,8 @@ No mesmo terminal que foi configurado o proxy executar o comando:
 ```bash
 ./mvnw javafx:run
 ```
+
+
 
 ## Contatos
 
