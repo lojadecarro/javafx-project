@@ -14,7 +14,7 @@ para serem relacionados na hora do registro de entidades mais complexas.
 */
 
 public class CriarInsertsBasicos {
-    public static void criar() throws SQLException {
+    public void criar() throws SQLException {
         String sqlMarca = """
             insert into marca (nome) values
             ('Chevrolet'),
@@ -146,7 +146,7 @@ public class CriarInsertsBasicos {
         String sqlEstadoConservacao = """
             insert into estado_conservacao (nome) values
             ('Novo'),
-            ('Seminovo '),
+            ('Seminovo'),
             ('Usado');         
         """;
 

@@ -107,4 +107,24 @@ public class Venda {
             throw new RuntimeException("O funcionário ou a unidade não estao disponiveis no momento.");
         }
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void diaHorarioParaResultSet(LocalDateTime dia_horario){
+        this.dia_horario = dia_horario;
+    }
 }

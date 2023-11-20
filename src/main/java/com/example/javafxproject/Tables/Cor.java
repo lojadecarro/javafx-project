@@ -27,8 +27,8 @@ public class Cor {
         String[] palavras = nome.split(" ");
         StringBuilder nomeFormatadodo = new StringBuilder();
 
-        if (nome.length() > 30 || nome.length() < 3 || !nome.matches("[a-zA-Z ]+")) {
-            throw new RuntimeException("Uma cor deve ter apenas letras sem acentos e possuir um tamanho entre 2 e 30.");
+        if (nome.length() > 30 || nome.length() < 3 || !nome.matches("[\\p{L} ]+")) {
+            throw new RuntimeException("Uma cor deve ter um tamanho entre 2 a 30 caracteres.");
         }
         
         for (String palavra : palavras) {

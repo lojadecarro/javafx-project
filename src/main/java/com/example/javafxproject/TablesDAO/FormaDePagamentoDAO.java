@@ -105,7 +105,7 @@ public class FormaDePagamentoDAO {
         return null;
     }
 
-    private FormaDePagamento resultSetToFormaDePagamento(ResultSet rs) throws SQLException { 
+    protected static FormaDePagamento resultSetToFormaDePagamento(ResultSet rs) throws SQLException { 
         return new FormaDePagamento(
             rs.getInt("id"),
             rs.getString("nome")

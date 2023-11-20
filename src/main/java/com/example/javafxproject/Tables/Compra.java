@@ -47,4 +47,24 @@ public class Compra {
             throw new RuntimeException("O funcionário não está disponivel no momento ou a unidade vinculada à compra já está em posse da loja");
         }
     }
+
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Unidade getUnidade() {
+        return unidade;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void diaHorarioParaResultSet(LocalDateTime dia_horario){
+        this.dia_horario = dia_horario;
+    }
 }

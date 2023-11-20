@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Transmissao;
@@ -80,8 +82,8 @@ public class TransmissaoDAO {
     }
     */
 
-    public Transmissao findByNome(String nome) { 
-        String sql = "SELECT * FROM transmissao WHERE nome = ?;";
+    public static Transmissao findByNome(String nome) { 
+        String sql = "SELECT * FROM transmissao WHERE tipo = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
@@ -103,6 +105,31 @@ public class TransmissaoDAO {
         }
 
         return null;
+    }
+
+    public static List<Transmissao> listarTransmissoes() { 
+        List<Transmissao> transmissoes = new ArrayList<>();
+        String sql = "SELECT * FROM transmissao;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Transmissao transmissao = resultSetToTransmissao(rs);
+                transmissoes.add(transmissao);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return transmissoes;
     }
 
     protected static Transmissao resultSetToTransmissao(ResultSet rs) throws SQLException { 

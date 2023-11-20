@@ -9,7 +9,7 @@
 <?import java.net.*?>
 
 
-<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER_LEFT" spacing="50.0" xmlns:fx="http://javafx.com/fxml"
 fx:controller="com.example.javafxproject.Controller.CadastroAdvertenciaController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
@@ -19,39 +19,33 @@ fx:controller="com.example.javafxproject.Controller.CadastroAdvertenciaControlle
         <Label styleClass="titulo" text="Cadastrar Advertência" />
     </VBox>
 
-    <VBox  spacing="20.0">
-        <Label text="Gravidade:" />
-    </VBox>
-    <ComboBox fx:id="cboGravidade" prefWidth="150.0">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="1" />
-                <String fx:value="2" />
-                <String fx:value="3" />
-                <String fx:value="4" />
-                <String fx:value="5" />
-            </FXCollections>
-        </items>
-    </ComboBox>
+    <VBox alignment="CENTER" spacing="40.0" >
+        <HBox spacing="10.0" >
+            <Label text="Gravidade:" />
+            
+            <ComboBox fx:id="cboGravidade" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="1" />
+                        <String fx:value="2" />
+                        <String fx:value="3" />
+                        <String fx:value="4" />
+                        <String fx:value="5" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+        </HBox>
 
-    <VBox  spacing="20.0">
-        <Label text="Funcionário:" />
-    </VBox>
-    <ComboBox fx:id="cboFuncionario" prefWidth="150.0">
-        <items>
-            <FXCollections fx:factory="observableArrayList">
-                <String fx:value="João" />
-                <String fx:value="Pedro" />
-                <String fx:value="Guilherme" />
-                <String fx:value="Mateus" />
-                <String fx:value="Arthur" />
-                <String fx:value="Alexandre" />
-            </FXCollections>
-        </items>
-    </ComboBox>
+        <HBox spacing="10.0">
+            <Label text="Funcionario:" />
+            <ComboBox fx:id="cboFuncionario" />
+        </HBox>
 
-    <Label text="Motivo" />
-    <TextField fx:id="txfMotivo" />
+        <VBox spacing="10.0" >
+            <Label text="Motivo" />
+            <TextField fx:id="txfMotivo" />
+        </VBox>
+    </VBox>
 
     <VBox alignment="CENTER_RIGHT" spacing="20.0">
         <Button styleClass= "botao" text="Concluir" onAction="#onActionCadastrarnovaadvertencia" />

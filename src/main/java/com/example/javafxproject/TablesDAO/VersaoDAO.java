@@ -93,17 +93,16 @@ public class VersaoDAO {
         return null;
     }
 
-    public List<Versao> findVersoesByModelo(Modelo modelo) {
+    public static List<Versao> findVersoesByModelo(String nome) {
         List<Versao> versoes = new ArrayList<>();
 
-        String sql = "SELECT * FROM versao WHERE id_modelo = ?;";
+        String sql = "SELECT * FROM versao ve INNER JOIN modelo mo ON ve.id_modelo = mo.id WHERE mo.nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setInt(1, modelo.getId());
-
+            statement.setString(1, nome);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {
@@ -158,6 +157,32 @@ public class VersaoDAO {
 
             if (rs.next()) {
                 return CategoriaCarroDAO.resultSetTocategoriaCarro(rs);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return null;
+    }
+
+    public static Versao findVersaoByModeloENome(String modelo, String versao) {
+        String sql = "SELECT * FROM versao ve INNER JOIN modelo mo ON ve.id_modelo=mo.id WHERE mo.nome = ? AND ve.nome = ?;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setString(1, modelo);
+            statement.setString(2, versao);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                return resultSetToVersao(rs);
             }
 
             rs.close();

@@ -9,7 +9,7 @@
 <?import java.net.*?>
 
 
-<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER_LEFT" spacing="50.0" xmlns:fx="http://javafx.com/fxml"
 fx:controller="com.example.javafxproject.Controller.CadastroCarroController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
@@ -19,91 +19,60 @@ fx:controller="com.example.javafxproject.Controller.CadastroCarroController">
         <Label styleClass="titulo" text="Cadastrar Carro" />
     </VBox>
 
-    <HBox spacing="20.0"> 
-        <VBox>
-            <VBox  spacing="20.0">
-                <Label text="Conservação:" />
-            </VBox>
-            <ComboBox fx:id="cboConservacao" prefWidth="150.0">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Novo" />
-                        <String fx:value="Semi-novo" />
-                        <String fx:value="Usado" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
+    <HBox alignment="CENTER" spacing="20.0">
+        <HBox spacing="10">
+            <Label text="Marca:" />
+            <ComboBox fx:id="cboMarca" onAction="#selecionarMarca"/>
+        </HBox>
 
-            <Label text="Cidade" />
-            <TextField fx:id="txfCidade" />
+        <HBox spacing="10">
+            <Label text="Modelo:" />
+            <ComboBox fx:id="cboModelo" onAction="#selecionarModelo" />
+        </HBox>
 
-            <Label text="Estado" />
-            <TextField fx:id="txfEstado" />
+        <HBox spacing="10">
+            <Label text="Versao:" />
+            <ComboBox fx:id="cboVersao" />
+        </HBox>
+    </HBox>
 
-            <Label text="Placa" />
-            <TextField fx:id="txfPlaca" />
+    <HBox alignment="CENTER" spacing="50.0"> 
+        <VBox alignment="CENTER_LEFT" spacing="40.0">
+            <HBox spacing="10">
+                <Label text="Estado de Conservacao:" />
+                <ComboBox fx:id="cboEstadoDeConservacao" />
+            </HBox>
 
-            <Label text="Ano" />
-            <TextField fx:id="txfAno" />
+            <HBox spacing="10">
+                <Label text="Cor:" />
+                <ComboBox fx:id="cboCor" />
+            </HBox>
 
-            <Label text="Fabricante" />
-            <TextField fx:id="txfFabricante" />
-        </VBox>
-
-        <VBox>
-            <VBox spacing="20.0">
-                <Label text="Categoria:" />
-            </VBox>
-
-            <ComboBox fx:id="cboCategoria" prefWidth="150.0">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Sedan" />
-                        <String fx:value="Hatch" />
-                        <String fx:value="SUV" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
-            <VBox spacing="20.0">
-                <Label text="Marca:" />
-            </VBox>
-
-            <ComboBox fx:id="cboMarca" prefWidth="150.0">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Citroën" />
-                        <String fx:value="Chevrolet" />
-                        <String fx:value="Fiat" />
-                        <String fx:value="Ford" />
-                        <String fx:value="Honda" />
-                        <String fx:value="Peugeot" />
-                        <String fx:value="Renault" />
-                        <String fx:value="Toyota" />
-                        <String fx:value="Volkswagen" />
-                        <String fx:value="Ferrari" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
-
-            <Label text="Modelo" />
-            <TextField fx:id="txfModelo" />
-            
-            <Label text="Cor" />
-            <TextField fx:id="txfCor" />
-
-            <VBox  spacing="20.0">
+            <HBox spacing="10">
                 <Label text="Transmissão:" />
+                <ComboBox fx:id="cboTransmissao" />
+            </HBox>
+        </VBox>
+        <VBox spacing="20.0">
+            <VBox spacing="10.0">
+                <Label text="Placa" />
+                <TextField fx:id="txfPlaca" promptText="AAA0A00 ou AAA0000"/>
             </VBox>
 
-            <ComboBox fx:id="cboTransmissao" prefWidth="150.0">
-                <items>
-                    <FXCollections fx:factory="observableArrayList">
-                        <String fx:value="Automático" />
-                        <String fx:value="Manual" />
-                    </FXCollections>
-                </items>
-            </ComboBox>
+            <VBox spacing="10.0">
+                <Label text="Ano" />
+                <TextField fx:id="txfAno" />
+            </VBox>
+
+            <VBox spacing="10.0">
+                <Label text="Quilometragem" />
+                <TextField fx:id="txfQuilometragem" />
+            </VBox>
+
+            <VBox spacing="10.0">    
+                <Label text="Valor unitário" />
+                <TextField fx:id="txfValor" promptText="R$"/>
+            </VBox>
         </VBox>
     </HBox>
     

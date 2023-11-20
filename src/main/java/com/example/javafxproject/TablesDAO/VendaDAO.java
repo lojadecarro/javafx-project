@@ -12,72 +12,51 @@ import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Cliente;
+import com.example.javafxproject.Tables.FormaDePagamento;
+import com.example.javafxproject.Tables.Venda;
 import com.example.javafxproject.Tables.Funcionario;
-import com.example.javafxproject.Tables.TesteDrive;
 import com.example.javafxproject.Tables.Unidade;
 
-public class TesteDriveDAO {
-    public TesteDrive create(Funcionario funcionario, Cliente cliente, Unidade unidade) throws SQLException{
+public class VendaDAO {
+    public Venda create(Venda venda) throws SQLException{
         String sql = """
-            INSERT INTO teste_drive (id_funcionario, id_cliente, id_unidade, inicio) 
-            VALUES (?, ?, ?, ?);    
+            INSERT INTO venda (id_funcionario, id_cliente, id_unidade, id_forma_pagamento, dia_horario, desconto, parcelas, juros) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?);    
         """;
-
-        TesteDrive teste_drive = new TesteDrive(cliente, funcionario, unidade);
 
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection
             .prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
         ) {
-            statement.setInt(1, teste_drive.getFuncionario().getId());
-            statement.setInt(2, teste_drive.getCliente().getId());
-            statement.setInt(3, teste_drive.getUnidade().getId());
-            statement.setTimestamp(4, Timestamp.valueOf(teste_drive.getInicio()));
+            statement.setInt(1, venda.getFuncionario().getId());
+            statement.setInt(2, venda.getCliente().getId());
+            statement.setInt(3, venda.getUnidade().getId());
+            statement.setInt(4, venda.getForma_pagamento().getId());
+            statement.setTimestamp(5, Timestamp.valueOf(venda.getDia_horario()));
+            statement.setDouble(6, venda.getDesconto());
+            statement.setInt(7, venda.getParcelas());
+            statement.setDouble(8, venda.getJuros());
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
 
             if (rs.next()) {
-                teste_drive.setId(rs.getInt(1));
+                venda.setId(rs.getInt(1));
             }
 
             rs.close();
 
-            return teste_drive;
+            return venda;
         } 
     }
 
-    public TesteDrive marcarFim(TesteDrive teste_drive){
-        String sql = """
-            UPDATE teste_drive
-            SET fim = ?
-            WHERE ID = ?;        
-        """;
-
-        try (
-            Connection connection = Conexao.getConnection();
-            PreparedStatement statement = connection.prepareStatement(sql);
-        ){
-            statement.setTimestamp(1, Timestamp.valueOf(teste_drive.marcarFimTesteDrive()));
-            int linhasAfetadas = statement.executeUpdate();
-            
-            if (linhasAfetadas > 0) {
-                return teste_drive;
-            }
-            return null;
-
-        } catch (SQLException e) {
-            return null;
-        }
-    }
-
-    public List<TesteDrive> findTesteDrivesByData(LocalDate data){
-        List<TesteDrive> testes = new ArrayList<>();
+    public List<Venda> findVendasByData(LocalDate data){
+        List<Venda> Vendas = new ArrayList<>();
         String sql = """
             SELECT * 
-            FROM teste_drive
-            WHERE date(inicio) = ?        
+            FROM venda
+            WHERE date(dia_horario) = ?        
         """;
 
         try (
@@ -88,8 +67,8 @@ public class TesteDriveDAO {
             ResultSet rs = statement.executeQuery();
 
             if (rs.next()) {
-                TesteDrive teste_drive = resultSetToTesteDrive(rs);
-                testes.add(teste_drive);
+                Venda Venda = resultSetToVenda(rs);
+                Vendas.add(Venda);
             }
 
             rs.close();
@@ -98,10 +77,10 @@ public class TesteDriveDAO {
             e.printStackTrace();
         }
 
-        return testes;
+        return Vendas;
     }
 
-    private Funcionario findFuncionarioDoTesteDrive(int id){
+    private Funcionario findFuncionarioDaVenda(int id){
         String sql = "SELECT * FROM funcionario WHERE id = ?;";
 
         try (
@@ -126,7 +105,7 @@ public class TesteDriveDAO {
         return null;
     }
 
-    private Cliente findClienteDoTesteDrive(int id){
+    private Cliente findClienteDaVenda(int id){
         String sql = "SELECT * FROM cliente WHERE id = ?;";
 
         try (
@@ -151,7 +130,7 @@ public class TesteDriveDAO {
         return null;
     }
 
-    private Unidade findUnidadeDoTesteDrive(int id){
+    private Unidade findUnidadeDaVenda(int id){
         String sql = "SELECT * FROM unidade WHERE id = ?;";
 
         try (
@@ -176,17 +155,45 @@ public class TesteDriveDAO {
         return null;
     }
 
-    private TesteDrive resultSetToTesteDrive(ResultSet rs) throws SQLException{
-        TesteDrive teste = new TesteDrive(
-            rs.getInt("id"),
-            findClienteDoTesteDrive(rs.getInt("id_cliente")),
-            findFuncionarioDoTesteDrive(rs.getInt("id_funcionario")),
-            findUnidadeDoTesteDrive(rs.getInt("id_unidade"))
-        );
+    private FormaDePagamento findFormaDePagamentoDaVenda(int id){
+        String sql = "SELECT * FROM forma_pagamento WHERE id = ?;";
 
-        teste.inicioEFimParaResultSet(rs.getTimestamp("inicio").toLocalDateTime(), rs.getTimestamp("fim").toLocalDateTime());
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setInt(1, id);
 
-        return teste;
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                return FormaDePagamentoDAO.resultSetToFormaDePagamento(rs);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return null;
     }
 
+    private Venda resultSetToVenda(ResultSet rs) throws SQLException{
+        Venda venda = new Venda(
+            rs.getInt("id"),
+            findFuncionarioDaVenda(rs.getInt("id_funcionario")),
+            findClienteDaVenda(rs.getInt("id_cliente")),
+            findUnidadeDaVenda(rs.getInt("id_unidade")),
+            findFormaDePagamentoDaVenda(rs.getInt("id_forma_pagamento")),
+            rs.getDouble("desconto"),
+            rs.getInt("parcelas"),
+            rs.getDouble("juros")
+        );
+
+        venda.diaHorarioParaResultSet(rs.getTimestamp("dia_horario").toLocalDateTime());
+
+        return venda;
+    }
 }

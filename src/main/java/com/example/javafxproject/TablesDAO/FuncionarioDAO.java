@@ -383,6 +383,30 @@ public class FuncionarioDAO {
         return funcionarios;
     }
 
+    public static List<Funcionario> listarFuncionarios(){
+        List<Funcionario> funcionarios = new ArrayList<>();
+        String sql = "SELECT * FROM funcionario;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            Statement statement = connection.createStatement();
+        ) {
+            ResultSet rs = statement.executeQuery(sql);
+
+            while (rs.next()) {
+                Funcionario funcionario = resultSetToFuncionario(rs);
+                funcionarios.add(funcionario);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return funcionarios;
+    }
+
     public List<Funcionario> FindFuncionariosMaisAdvertidos(){
         List<Funcionario> funcionarios = new ArrayList<>();
         String sql = "SELECT * FROM funcionarios_mais_advertidos;";

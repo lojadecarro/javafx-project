@@ -28,7 +28,7 @@ public class EstadoConservacao {
     }
 
     public void setNome(String nome) {
-        if (!nome.matches("^[a-zA-Z\\-]+$") || nome.length() > 20) {
+        if (!nome.matches("^[\\p{L}- ]+$") || nome.length() > 20 || nome.length() < 4) {
             throw new RuntimeException("O estado de conservação não pode passar de 20 caracteres, podendo ter somente letras e \"-\".");
 
         }

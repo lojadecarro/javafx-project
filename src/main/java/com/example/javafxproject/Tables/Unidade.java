@@ -20,20 +20,19 @@ public class Unidade {
     public Unidade(int id, short ano, String placa, int quilometragem, EstadoConservacao estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor, Boolean disponibilidade) {
         Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor, disponibilidade);
         this.id = id;
-        setAno(ano);
+        setAno(ano, versao);
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);
-        versao.addUnidade(this);
         this.disponibilidade = disponibilidade;
     }
 
     public Unidade(short ano, String placa, int quilometragem, EstadoConservacao estado_conservacao, double valor_unitario, Versao versao, Transmissao transmissao, Cor cor) {
-        Verificacoes.verificarParametroNull(id, ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
-        setAno(ano);
+        Verificacoes.verificarParametroNull(ano, placa, quilometragem, estado_conservacao, valor_unitario, versao, transmissao, cor);
+        setAno(ano, versao);
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
@@ -41,7 +40,6 @@ public class Unidade {
         setTransmissao(transmissao);
         setCor(cor);
         disponibilidade = false;
-        versao.addUnidade(this);
     }
 
     public void addVenda(Venda venda){
@@ -76,7 +74,7 @@ public class Unidade {
         return disponibilidade;
     }
 
-    private void setAno(short ano){
+    private void setAno(short ano, Versao versao){
         short anoAtual = (short) LocalDate.now().getYear();
         short anoLancamentoVersao = (short) versao.getLancamento().getYear();
 
@@ -109,7 +107,7 @@ public class Unidade {
     }
 
     public void setValor_unitario(double valor_unitario) {
-        if (valor_unitario < 10000 || valor_unitario > 9999999.99 || Double.toString(valor_unitario).matches("^\\d+\\.\\d{1,2}$")) {
+        if (valor_unitario < 10000 || valor_unitario > 9999999.99) {
             throw new RuntimeException("O valor do carro deve ser maior ou igual a 10000 e menor ou igual a 9999999. insira o valor com os centavos.");
         }
         this.valor_unitario = valor_unitario;

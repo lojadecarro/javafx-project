@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Cor;
@@ -81,7 +83,7 @@ public class CorDAO {
     }
     */
 
-    public Cor findByNome(String nome) {
+    public static Cor findByNome(String nome) {
         String sql = "SELECT * FROM cor WHERE nome = ?;";
 
         try (
@@ -104,6 +106,31 @@ public class CorDAO {
         }
 
         return null;
+    }
+
+     public static List<Cor> listarCores() { 
+        List<Cor> cores = new ArrayList<>();
+        String sql = "SELECT * FROM cor;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Cor cor = resultSetToCor(rs);
+                cores.add(cor);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return cores;
     }
 
     protected static Cor resultSetToCor(ResultSet rs) throws SQLException {

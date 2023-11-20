@@ -1,7 +1,6 @@
 package com.example.javafxproject.Tables;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Versao {
     private int id;
@@ -9,7 +8,6 @@ public class Versao {
     private LocalDate lancamento;
     private Modelo modelo;
     private CategoriaCarro categoriaCarro;
-    private List<Unidade> unidades;
   
     public Versao(int id, String nome, LocalDate lancamento, Modelo modelo, CategoriaCarro categoriaCarro) {
         Verificacoes.verificarParametroNull(id, nome, lancamento, modelo, categoriaCarro);
@@ -18,7 +16,6 @@ public class Versao {
         setLancamento(lancamento);
         this.modelo = modelo;
         this.categoriaCarro = categoriaCarro;
-        modelo.addVersao(this);
     }
 
     public Versao(String nome, LocalDate lancamento, Modelo modelo, CategoriaCarro categoriaCarro) {
@@ -27,11 +24,6 @@ public class Versao {
         setLancamento(lancamento);
         this.modelo = modelo;
         this.categoriaCarro = categoriaCarro;
-        modelo.addVersao(this);
-    }
-
-    public void addUnidade(Unidade unidade){
-        unidades.add(unidade);
     }
 
     public int getId() {
@@ -54,7 +46,7 @@ public class Versao {
         String[] palavras = nome.split(" ");
         StringBuilder nomeFormatadodo = new StringBuilder();
 
-        if (nome.length() > 30 || nome.length() < 2 || nome.matches("^[a-zA-Z\\d ]+$")) {
+        if (nome.length() > 30 || nome.length() < 1 || !nome.matches("^[\\p{L}\\d- ]+$")) {
             throw new RuntimeException("o nome do modelo pode possuir apenas letras e digitos e deve possuir um tamanho entre 2 e 30.");
         }
         

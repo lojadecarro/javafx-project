@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import java.net.*?>
 
-<VBox alignment="CENTER_LEFT" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+<VBox alignment="CENTER_LEFT" spacing="50.0" xmlns:fx="http://javafx.com/fxml"
 fx:controller="com.example.javafxproject.Controller.CadastroClienteController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
@@ -14,39 +14,63 @@ fx:controller="com.example.javafxproject.Controller.CadastroClienteController">
 
     <VBox styleClass= "root" alignment="CENTER" spacing="20.0" >
         <Label styleClass="titulo" text="Cadastrar Cliente" />
-        <Label text="Utilize para realizar seu cadastro cliente:" />
+        <!-- <Label text="Utilize para realizar seu cadastro cliente:" /> -->
     </VBox>
 
-    <HBox spacing="20.0">
-        <VBox>
-            <Label text="Nome completo" />
-            <TextField fx:id="txfNomeCompleto"/>
+    <HBox alignment="CENTER" spacing="50.0">
+        <VBox spacing="20.0">
+            <Label text="Dados pessoais:" style="-fx-font-size: 16.0;" />
+            
+            <VBox spacing="10.0">
+                <Label text="Nome completo" />
+                <TextField fx:id="txfNomeCompleto"/>
+            </VBox>
 
-            <Label text="CPF" />
-            <TextField fx:id="txfCPF"/>
+            <VBox spacing="10.0">
+                <Label text="CPF" />
+                <TextField fx:id="txfCPF" promptText="00000000000"/>
+            </VBox>
 
-            <Label text="Data de nascimento" />
-            <DatePicker fx:id="dtNascimento" promptText="Selecionar data" />
+            <VBox spacing="10.0">
+                <Label text="Email" />
+                <TextField fx:id="txfEmail"/>
+            </VBox>
 
-            <Label text="Email" />
-            <TextField fx:id="txfEmail"/>
+            <VBox spacing="10.0">
+                <Label text="Telefone" />
+                <TextField fx:id="txfTelefone" promptText="00900000000"/>
+            </VBox>
 
-            <Label text="Telefone" />
-            <TextField fx:id="txfTelefone"/>
+            <VBox spacing="10.0">
+                <Label text="Data de nascimento" />
+                <DatePicker fx:id="dtNascimento" promptText="Selecionar data" />
+            </VBox>
         </VBox>
 
-        <VBox>
-            <Label text="Logradouro" />
-            <TextField fx:id="txfLogradouro"/>
+        <VBox alignment="CENTER_RIGHT" spacing="20.0">
+            <VBox alignment="CENTER_LEFT">
+                <Label text="Endereço:" style="-fx-font-size: 16.0;" />
+            </VBox>
 
-            <Label text="Número" />
-            <TextField fx:id="txfNumero"/>
+            <VBox spacing="10.0">
+                <Label text="Logradouro" />
+                <TextField fx:id="txfLogradouro"/>
+            </VBox>
 
-            <Label text="Complemento" />
-            <TextField fx:id="txfComplemento"/>
+            <VBox spacing="10.0">
+                <Label text="Número" />
+                <TextField fx:id="txfNumero"/>
+            </VBox>
 
-            <Label text="CEP" />
-            <TextField fx:id="txfCEP"/>
+            <VBox spacing="10.0">
+                <Label text="Complemento" />
+                <TextField fx:id="txfComplemento"/>
+            </VBox>
+
+            <VBox spacing="10.0">
+                <Label text="CEP" />
+                <TextField fx:id="txfCEP" promptText="00000000" />
+            </VBox>
         </VBox>
     </HBox>
 

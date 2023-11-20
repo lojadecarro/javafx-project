@@ -160,17 +160,16 @@ public class ModeloDAO {
 
 
 
-    public List<Modelo> findModelosByMarca(Marca marca) {
+    public static List<Modelo> findModelosByMarca(String nome) {
         List<Modelo> modelos = new ArrayList<>();
 
-        String sql = "SELECT * FROM modelo WHERE id_marca = ?;";
+        String sql = "SELECT * FROM modelo mo INNER JOIN marca ma ON ma.id = mo.id_marca WHERE ma.nome = ?;";
 
         try (
             Connection connection = Conexao.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
-            statement.setInt(1, marca.getId());
-
+            statement.setString(1, nome);
             ResultSet rs = statement.executeQuery();
 
             while (rs.next()) {

@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.EstadoConservacao;
@@ -60,7 +62,7 @@ public class EstadoConservacaoDAO {
             }
     }
 
-    public EstadoConservacao findByNome(String nome) {
+    public static EstadoConservacao findByNome(String nome) {
         String sql = "SELECT * FROM estado_conservacao WHERE nome = ?;";
 
         try (
@@ -83,6 +85,31 @@ public class EstadoConservacaoDAO {
         }
 
         return null;
+    }
+
+    public static List<EstadoConservacao> listarEstadosDeConservacao() { 
+        List<EstadoConservacao> ecs = new ArrayList<>();
+        String sql = "SELECT * FROM estado_conservacao;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                EstadoConservacao estadoConservacao = resultSetToEstadoConservacao(rs);
+                ecs.add(estadoConservacao);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return ecs;
     }
 
     protected static EstadoConservacao resultSetToEstadoConservacao(ResultSet rs) throws SQLException {

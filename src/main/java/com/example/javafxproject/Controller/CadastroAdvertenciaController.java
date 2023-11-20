@@ -1,5 +1,12 @@
 package com.example.javafxproject.Controller;
 
+import java.util.List;
+
+import com.example.javafxproject.Tables.Funcionario;
+import com.example.javafxproject.TablesDAO.FuncionarioDAO;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -12,11 +19,17 @@ public class CadastroAdvertenciaController {
     @FXML
     private TextField txfMotivo;
 
+    @FXML
+    public void initialize() {
+        List<Funcionario> funcionarios = FuncionarioDAO.listarFuncionarios();
+        ObservableList<String> itens = FXCollections.observableArrayList();
+        for (Funcionario funcionario : funcionarios) {
+            itens.add(funcionario.getNome());
+        }
+        cboFuncionario.setItems(itens);
+    }
+
     public void onActionCadastrarnovaadvertencia(){
-        //byte gravidade = cboGravidade.getValue();
-        // Se colocar do jeito que está em cima retorna um erro
-        // dizendo que não dá pra converter byte para String
-        // Vou colocar como String, só para testar. Depois modificamos.
         String gravidade = cboGravidade.getValue();
         String funcionario = cboFuncionario.getValue();
         String motivo = txfMotivo.getText();

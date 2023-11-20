@@ -42,22 +42,13 @@ public class CadastroClienteController {
         String numero = txfNumero.getText();
         String complemento = txfComplemento.getText();
         String cep = txfCEP.getText();
-        
-        
-        ClienteDAO clienteDao = new ClienteDAO();
 
-        EnderecoDAO enderecoDao = new EnderecoDAO();
         Endereco endereco = new Endereco(logradouro, Short.valueOf(numero), complemento, cep);
-        Endereco enderecoCriado = enderecoDao.create(endereco);
-
-        Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, dataNascimento, enderecoCriado);
-
-        Cliente clienteCriado = clienteDao.create(cliente);
+        EnderecoDAO enderecoCriado = new EnderecoDAO();
+        endereco = enderecoCriado.create(endereco);
         
-        System.out.println(clienteCriado.toString());
-        System.out.println(clienteDao.findByCpf(cpf));
-
-        //System.out.println(nome + "\n" + cpf + "\n" + sobrenome + "\n" + email + "\n" + telefone);
+        Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, dataNascimento, endereco);
+        ClienteDAO clienteCriado = new ClienteDAO();
+        clienteCriado.create(cliente);
     }
-
 }

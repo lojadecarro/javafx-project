@@ -1,10 +1,13 @@
 package com.example.javafxproject.TablesDAO;
 
 import com.example.javafxproject.Tables.CategoriaCarro;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.example.javafxproject.Conexao.Conexao;
 
@@ -103,6 +106,32 @@ public class CategoriaCarroDAO {
         }
 
         return null;
+    }
+
+     public static List<CategoriaCarro> listarCategoriasDaVersao(String nome) { 
+        List<CategoriaCarro> categorias = new ArrayList<>();
+        String sql = "SELECT * FROM categoria_carro cc INNER JOIN versao ve ON ve.id_categoria_carro = cc.id WHERE ve.nome = ?;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setString(1, nome);
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                CategoriaCarro categoriaCarro = resultSetTocategoriaCarro(rs);
+                categorias.add(categoriaCarro);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return categorias;
     }
 
     protected static CategoriaCarro resultSetTocategoriaCarro(ResultSet rs) throws SQLException {

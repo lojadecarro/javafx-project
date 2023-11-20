@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Marca;
 
@@ -83,6 +86,31 @@ public class MarcaDAO {
         }
 
         return null;
+    }
+
+    public static List<Marca> listarMarcas() {
+        List<Marca> marcas = new ArrayList<>();
+        String sql = "SELECT * FROM marca;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            ResultSet rs = statement.executeQuery();
+
+            while (rs.next()) {
+                Marca marca = resultSetToMarca(rs);
+                marcas.add(marca);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return marcas;
     }
 
     protected static Marca resultSetToMarca(ResultSet rs) throws SQLException {
