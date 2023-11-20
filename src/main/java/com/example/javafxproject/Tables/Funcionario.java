@@ -3,7 +3,6 @@ package com.example.javafxproject.Tables;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.temporal.TemporalAdjusters;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -16,22 +15,22 @@ public class Funcionario extends Pessoa{
     private double horasDeTrabalhoDeDiferenca;
     private short dia_pagamentoOriginal;
     private short dia_pagamento = dia_pagamentoOriginal;
-    private LocalTime[] intervalos;
+    private LocalTime intervalo1;
+    private LocalTime intervalo2;
     private short duracaoIntervalosMinutos;
     private Cargo cargo;
     private Turno turno;
     private boolean disponivel;
-    private List<Advertencia> advertencias;
     private List<Compra> compras;
     private List<Venda> vendas;
 
-    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo, Cargo cargo, Turno turno){
+    public Funcionario(int id, String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo1, Cargo cargo, Turno turno){
         super(id, nome, email, contato, cpf, data_nascimento, endereco);
-        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
+        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo1, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         setDuracaoIntervalosMinutos(duracaoIntervalosMinutos);
-        adicionarIntervalo(intervalo);
+        this.intervalo1 = intervalo1;
         setCargo(cargo);
         setTurno(turno);
         disponivel = false;
@@ -49,13 +48,13 @@ public class Funcionario extends Pessoa{
         scheduler2.scheduleAtFixedRate(this::terminarPeriodoDePagamento, 0, 1, TimeUnit.DAYS);
     }
 
-    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo, Cargo cargo, Turno turno){
+    public Funcionario(String nome, String email, String contato, String cpf, LocalDate data_nascimento, Endereco endereco, double salario_fixo, short dia_pagamento, short duracaoIntervalosMinutos, LocalTime intervalo1, Cargo cargo, Turno turno){
         super(nome, email, contato, cpf, data_nascimento, endereco);
-        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo, cargo, turno);
+        Verificacoes.verificarParametroNull(salario_fixo, dia_pagamento, duracaoIntervalosMinutos, intervalo1, cargo, turno);
         setSalario_fixo(salario_fixo);
         setDia_pagamentoOriginal(dia_pagamento);
         setDuracaoIntervalosMinutos(duracaoIntervalosMinutos);
-        adicionarIntervalo(intervalo);
+        this.intervalo1 = intervalo1;
         setCargo(cargo);
         setTurno(turno);
         disponivel = false;
@@ -71,10 +70,6 @@ public class Funcionario extends Pessoa{
 
     public double calcularPagamento(){
         return salario_fixo + (20*(horasDeTrabalhoDeDiferenca)) + comissao;
-    }
-
-    public void addAdvertencia(Advertencia Advertencia){
-        advertencias.add(Advertencia);
     }
 
     public void addCompra(Compra compra){
@@ -162,8 +157,12 @@ public class Funcionario extends Pessoa{
         return disponivel;
     }
 
-    public LocalTime[] getIntervalos() {
-        return intervalos;
+    public LocalTime getIntervalo1() {
+        return intervalo1;
+    }
+
+    public LocalTime getIntervalo2() {
+        return intervalo2;
     }
 
     public short getDuracaoIntervalosMinutos() {
@@ -234,39 +233,39 @@ public class Funcionario extends Pessoa{
         }
     }
 
-    public void adicionarIntervalo(LocalTime intervalo){
+    public void adicionarIntervalo(LocalTime intervalo, Turno turno){
         if (intervalo == null) {
             return;
         }
-        if (turno.getDuracaoMinutos() < 7*60 && intervalos[0] != null) {
+        if (turno.getDuracaoMinutos() < 7*60 && intervalo1 != null) {
             throw new RuntimeException("Um funcionário com um turno com menos de 7 horas de duração não pode ter mais de um intervalo.");
         }
 
-        if (intervalos[1] == null) {
-            LocalTime fimIntervalo1 = intervalos[0].plusMinutes(duracaoIntervalosMinutos);
+        if (intervalo2 == null) {
+            LocalTime fimIntervalo1 = intervalo1.plusMinutes(duracaoIntervalosMinutos);
             LocalTime fimSegundoIntervalo = intervalo.plusMinutes(duracaoIntervalosMinutos);
 
-            if (fimIntervalo1.isBefore(intervalos[0])) {
-                if (!intervalo.isBefore(intervalos[0]) || !intervalo.isAfter(fimIntervalo1)) {
+            if (fimIntervalo1.isBefore(intervalo1)) {
+                if (!intervalo.isBefore(intervalo1) || !intervalo.isAfter(fimIntervalo1)) {
                     throw new RuntimeException("Um intervalo não pode estar dentro de outro.");
                 } 
 
-                if (!fimSegundoIntervalo.isBefore(intervalos[0]) || !fimSegundoIntervalo.isAfter(fimIntervalo1)) {
+                if (!fimSegundoIntervalo.isBefore(intervalo1) || !fimSegundoIntervalo.isAfter(fimIntervalo1)) {
                     throw new RuntimeException("Um intervalo não pode estar dentro de outro.");
                 }
 
             } else{
-                if (!intervalo.isBefore(intervalos[0]) && !intervalo.isAfter(fimIntervalo1)) {
+                if (!intervalo.isBefore(intervalo1) && !intervalo.isAfter(fimIntervalo1)) {
                     throw new RuntimeException("Um intervalo não pode estar dentro de outro.");
                 }
                 
-                if (!fimSegundoIntervalo.isBefore(intervalos[0]) && !fimSegundoIntervalo.isAfter(fimIntervalo1)) {
+                if (!fimSegundoIntervalo.isBefore(intervalo1) && !fimSegundoIntervalo.isAfter(fimIntervalo1)) {
                     throw new RuntimeException("Um intervalo não pode estar dentro de outro.");
                 }
             }
 
             if (fimIntervalo1.isBefore(LocalTime.of(22, 00))) {
-                if (intervalo.isBefore(fimIntervalo1.plusMinutes(120)) && intervalo.isAfter(intervalos[0])) {
+                if (intervalo.isBefore(fimIntervalo1.plusMinutes(120)) && intervalo.isAfter(intervalo1)) {
                     throw new RuntimeException("Um segundo intervalo deve ter pelo menos duas horas de diferença do outro.");
                 }
             } else {
@@ -275,22 +274,22 @@ public class Funcionario extends Pessoa{
                 }
             }
 
-            if (!intervalos[0].isBefore(LocalTime.of(2, 00))) {
-                if (fimSegundoIntervalo.isBefore(intervalos[0]) && fimSegundoIntervalo.isAfter(intervalos[0].plusHours(22))) {
+            if (!intervalo1.isBefore(LocalTime.of(2, 00))) {
+                if (fimSegundoIntervalo.isBefore(intervalo1) && fimSegundoIntervalo.isAfter(intervalo1.plusHours(22))) {
                     throw new RuntimeException("Um segundo intervalo deve ter pelo menos duas horas de diferença do outro.");
                 }
             } else {
-                if (fimSegundoIntervalo.isBefore(intervalos[0]) || fimSegundoIntervalo.isAfter(intervalos[0].plusHours(22))){
+                if (fimSegundoIntervalo.isBefore(intervalo1) || fimSegundoIntervalo.isAfter(intervalo1.plusHours(22))){
                     throw new RuntimeException("Um segundo intervalo deve ter pelo menos duas horas de diferença do outro.");
                 }
             }
         }
 
-        if (intervalos[0] == null) {
-            intervalos[0] = intervalo;
+        if (intervalo1 == null) {
+            intervalo1 = intervalo;
 
-        } else if (intervalos[1] == null) {
-            intervalos[1] = intervalo;
+        } else if (intervalo2 == null) {
+            intervalo2 = intervalo;
 
         } else { 
             throw new RuntimeException("O funcionário já possui dois intervalos, remova um para adicionar outro.");
@@ -298,8 +297,8 @@ public class Funcionario extends Pessoa{
     }
 
     public void deletarIntervalo(LocalTime intervalo, LocalTime novoIntervalo){
-        if (intervalos[1] == null) {
-            if (intervalo != intervalos[0]) {
+        if (intervalo2 == null) {
+            if (intervalo != intervalo1) {
                 throw new RuntimeException("O funcionário não possui um intervalo que se inicie nesse horário.");
             }
 
@@ -307,35 +306,34 @@ public class Funcionario extends Pessoa{
                 throw new RuntimeException("Um funcionário deve manter pelo menos um intervalo. Caso queira remover esse intervalo, coloque um novo");
             } else {
                 verificarIntervalo(novoIntervalo);
-                intervalos[0] = null;
-                adicionarIntervalo(novoIntervalo);
+                intervalo1 = null;
+                adicionarIntervalo(novoIntervalo, turno);
             } 
 
         } else {
             if (novoIntervalo == null) {
-                if (intervalos[0] == intervalo) {
-                    intervalos[0] = intervalos[1];
-                    intervalos[1] = null;
+                if (intervalo1 == intervalo) {
+                    intervalo1 = intervalo2;
+                    intervalo2 = null;
 
-                } else if (intervalos[1] == intervalo) {
-                    intervalos[1] = null;
+                } else if (intervalo2 == intervalo) {
+                    intervalo2 = null;
 
                 } else {
                     throw new RuntimeException("O funcionário não possui um intervalo que se inicie nesse horário.");
-
                 }
        
             } else {
                 verificarIntervalo(novoIntervalo);
 
-                if (intervalos[0] == intervalo) {
-                    intervalos[0] = intervalos[1];
-                    intervalos[1] = null;
-                    adicionarIntervalo(novoIntervalo);
+                if (intervalo1 == intervalo) {
+                    intervalo1 = intervalo2;
+                    intervalo2 = null;
+                    adicionarIntervalo(novoIntervalo, turno);
 
-                } else if (intervalos[1] == intervalo) {
-                    intervalos[1] = null;
-                    adicionarIntervalo(novoIntervalo);
+                } else if (intervalo2 == intervalo) {
+                    intervalo2 = null;
+                    adicionarIntervalo(novoIntervalo, turno);
 
                 } else {
                     throw new RuntimeException("O funcionário não possui um intervalo que se inicie nesse horário.");
@@ -349,6 +347,7 @@ public class Funcionario extends Pessoa{
         return cargo;
     }
 
+    /*
     @Override
     public String toString() {
         return "Funcionario [salario_fixo=" + salario_fixo + ", pagamentoDoMes=" + pagamentoDoMes + ", comissao="
@@ -358,4 +357,5 @@ public class Funcionario extends Pessoa{
                 + cargo + ", turno=" + turno + ", disponivel=" + disponivel + ", advertencias=" + advertencias
                 + ", compras=" + compras + ", vendas=" + vendas + "]";
     }
+    */
 }

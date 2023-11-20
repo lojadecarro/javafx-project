@@ -9,7 +9,7 @@ import com.example.javafxproject.Conexao.Conexao;
 import com.example.javafxproject.Tables.Endereco;
 
 public class EnderecoDAO {
-    public Endereco create(Endereco endereco) throws SQLException {
+    public static Endereco create(Endereco endereco) throws SQLException {
         String sql = """
         INSERT INTO endereco (logradouro, numero, complemento, cep) 
         VALUES (?, ?, ?, ?)

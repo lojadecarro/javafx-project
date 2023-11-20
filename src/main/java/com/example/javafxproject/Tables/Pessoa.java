@@ -21,7 +21,7 @@ public abstract class Pessoa {
         setContato(contato);
         setCPF(cpf);
         verificarIdade(data_nascimento);
-        setEndereco(null);
+        setEndereco(endereco);
         data_registro = LocalDate.now();
     }
 
@@ -32,7 +32,7 @@ public abstract class Pessoa {
         setContato(contato);
         setCPF(cpf);
         verificarIdade(data_nascimento);
-        setEndereco(null);
+        setEndereco(endereco);
         data_registro = LocalDate.now();
     }
 
@@ -103,7 +103,7 @@ public abstract class Pessoa {
     }
 
     public void setContato(String contato) {
-        if (!contato.matches("^\\d{2}9\\d{8}$")) {
+        if (!contato.matches("^\\d{2}9\\d{8}$") && !contato.matches("^\\(\\d{2}\\)\\s9\\d{4}-\\d{4}$")) {
             throw new RuntimeException("O número de contato deve possuir o DDD e em seguida o número de contato, sem espaços.");
         }
         contato = "(" + contato.substring(0, 2) + ")" + " " + contato.substring(2, 7) + "-" + contato.substring(7);
@@ -115,7 +115,7 @@ public abstract class Pessoa {
     }
 
     private void setCPF(String cpf){
-        if (!cpf.matches("^\\d{11}$")) {
+        if (!cpf.matches("^\\d{11}$") && !cpf.matches("^\\d{3}.\\d{3}.\\d{3}-\\d{2}")) {
             throw new RuntimeException("O cpf deve ser completo e sem \".\" ou \"-\". ");
         }
         this.cpf = cpf.substring(0, 3) + "." + cpf.substring(3, 6) + "." + cpf.substring(6, 9) + "-" + cpf.substring(9);

@@ -9,7 +9,7 @@ import com.example.javafxproject.Tables.Advertencia;
 import com.example.javafxproject.Tables.Funcionario;
 
 public class AdvertenciaDAO {
-    public Advertencia create(Advertencia advertencia) throws SQLException {
+    public static Advertencia create(Advertencia advertencia) throws SQLException {
         String sql = """
         INSERT INTO advertencia (id_funcionario, gravidade, motivo)
         VALUES (?, ?, ?);

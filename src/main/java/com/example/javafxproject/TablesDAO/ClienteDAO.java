@@ -11,7 +11,7 @@ import com.example.javafxproject.Tables.Cliente;
 import com.example.javafxproject.Tables.Endereco;
 
 public class ClienteDAO {
-    public Cliente create(Cliente cliente) throws SQLException{
+    public static Cliente create(Cliente cliente) throws SQLException{
         String sql = """
                 INSERT INTO cliente (id_endereco, nome, email, contato, cpf, data_nascimento, data_registro)
                 VALUES (?, ?, ?, ?, ?, ?, ?);

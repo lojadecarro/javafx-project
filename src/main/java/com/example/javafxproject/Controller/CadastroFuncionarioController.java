@@ -80,44 +80,26 @@ public class CadastroFuncionarioController {
         String email = txfEmail.getText();
         String telefone = txfTelefone.getText();
         LocalDate dataNascimento = dtNascimento.getValue();
-        String salarioFixo = txfSalarioFixo.getText();
-        String diaPagamento = txfDiaPagamento.getText();
-        String intervaloEmString = txfIntervalo.getText();
+        Double salarioFixo = Double.parseDouble(txfSalarioFixo.getText());
+        Short diaPagamento = Short.parseShort(txfDiaPagamento.getText());
+        LocalTime inicioTurno = LocalTime.parse(cboTurno.getSelectionModel().getSelectedItem().substring(0, 5));
+        LocalTime fimTurno = LocalTime.parse(cboTurno.getSelectionModel().getSelectedItem().substring(8));
+        Turno turno = TurnoDAO.findByInicioEFim(inicioTurno, fimTurno);
+        LocalTime intervalo = LocalTime.parse(txfIntervalo.getText());
         short duracaoIntervalo = Short.parseShort(txfDuracao.getText());
         String cargoEmString = cboCargo.getSelectionModel().getSelectedItem();
-        String inicioTurnoEmString = cboTurno.getSelectionModel().getSelectedItem().substring(0, 5);
-        String fimTurnoEmString = cboTurno.getSelectionModel().getSelectedItem().substring(8);
         String logradouro = txfLogradouro.getText();
         String numero =  txfNumero.getText();
         String complemento = txfComplemento.getText();
         String cep = txfCEP.getText();
 
-        FuncionarioDAO funcionarioDao = new FuncionarioDAO();
-        EnderecoDAO enderecoDao = new EnderecoDAO();
-
         Endereco endereco = new Endereco(logradouro, Short.parseShort(numero), complemento, cep);
-        Endereco enderecoCriado = enderecoDao.create(endereco);
-        LocalTime intervalo = LocalTime.parse(intervaloEmString); // Conversão. Supondo que o formato seja HH:mm:ss
-        LocalTime inicioTurno = LocalTime.parse(inicioTurnoEmString);
-        LocalTime fimTurno = LocalTime.parse(fimTurnoEmString);
-        Turno turno = new Turno(inicioTurno, fimTurno);
-        Cargo cargo = new Cargo(cargoEmString);
+        EnderecoDAO.create(endereco);
 
-        Funcionario funcionario = new Funcionario(nomeCompleto, email, telefone, cpf, dataNascimento, enderecoCriado, Double.valueOf(salarioFixo), Short.valueOf(diaPagamento), duracaoIntervalo, intervalo, cargo, turno);
+        Cargo cargo = CargoDAO.findByNome(cargoEmString);
 
-        Funcionario funcionarioCriado = funcionarioDao.create(funcionario);
-        System.out.println(funcionarioCriado.toString());
-        
-       /* 
-        System.out.println(nomeCompleto);
-        System.out.println(email);
-        System.out.println(cpf);
-        System.out.println(telefone);
-        System.out.println(dataNascimento);
-        System.out.println(salarioFixo);
-        System.out.println(diaPagamento);
-        System.out.println(intervalo);
-        System.out.println(turno);
-        */
+        Funcionario funcionario = new Funcionario(nomeCompleto, email, telefone, cpf, dataNascimento, endereco, salarioFixo, diaPagamento, duracaoIntervalo, intervalo, cargo, turno);
+
+        FuncionarioDAO.create(funcionario);
     }
 }

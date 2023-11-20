@@ -20,7 +20,7 @@ public class RegistroPonto {
         this.id = id;
         this.funcionario = funcionario;
         entrada = LocalDateTime.now();
-        verificarEntrada();
+        //verificarEntrada();
         funcionario.setDisponivel();
     }
 
@@ -28,7 +28,7 @@ public class RegistroPonto {
         Verificacoes.verificarParametroNull(id, funcionario);
         this.funcionario = funcionario;
         entrada = LocalDateTime.now();
-        verificarEntrada();
+        //verificarEntrada();
         funcionario.setDisponivel();
     }
 
@@ -60,6 +60,7 @@ public class RegistroPonto {
         return (short) (minutosTrabalhadosDia - duracaoTurno);
     }
 
+    /*
     public Advertencia verificarEntrada(){
         if (inicioTurno.isBefore(LocalTime.of(23, 50)) && !inicioTurno.isBefore(LocalTime.of(0, 10))) {
             if (!entradaHM.isAfter(inicioTurno.plusMinutes((60*23) + 50)) && !entradaHM.isBefore(inicioTurno.plusMinutes(10))) {
@@ -84,6 +85,7 @@ public class RegistroPonto {
         }
         return null;
     }
+    */
 
     public Funcionario getFuncionario() {
         return funcionario;

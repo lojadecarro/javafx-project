@@ -58,8 +58,7 @@ public class RegistroPontoDAO {
 
             if (ponto.calcularHorasDeTrabalhoDeDiferenca() < -(20/60)) {
                 Advertencia advertecia = new Advertencia((byte) 1, ponto.getFuncionario(), "Funcionário com atraso superior a 20 minutos");
-                AdvertenciaDAO ad = new AdvertenciaDAO();
-                ad.create(advertecia);
+                AdvertenciaDAO.create(advertecia);
             } else if (ponto.calcularHorasDeTrabalhoDeDiferenca() > 20/60 && ponto.calcularHorasDeTrabalhoDeDiferenca() < 2) {
                 ponto.getFuncionario().ModificarHorasDeTrabalhoDeDiferenca(ponto.calcularHorasDeTrabalhoDeDiferenca());
             } else if (ponto.calcularHorasDeTrabalhoDeDiferenca() > 2) {
@@ -67,10 +66,12 @@ public class RegistroPontoDAO {
             } else {
             }
 
+            /*
             if (ponto.verificarEntrada() != null) {
                 AdvertenciaDAO ad = new AdvertenciaDAO();
                 ad.create(ponto.verificarEntrada());
             }
+            */
 
             FuncionarioDAO funcionarioUpdt = new FuncionarioDAO();
             funcionarioUpdt.update(ponto.getFuncionario());

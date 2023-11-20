@@ -84,7 +84,7 @@ public class CargoDAO {
     }
     */
 
-    public Cargo findByNome(String nome) {
+    public static Cargo findByNome(String nome) {
         String sql = "SELECT * FROM cargo WHERE nome = ?;";
 
         try (

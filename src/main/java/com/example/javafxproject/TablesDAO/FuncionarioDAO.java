@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +17,10 @@ import com.example.javafxproject.Tables.Funcionario;
 import com.example.javafxproject.Tables.Turno;
 
 public class FuncionarioDAO {
-    public Funcionario create(Funcionario funcionario) throws SQLException{
+    public static Funcionario create(Funcionario funcionario) throws SQLException{
         String sql = """
-                INSERT INTO funcionario (id_endereco, id_cargo, id_turno, nome, email, contato, cpf, data_nascimento, data_registro, dia_pagamento, salario_fixo, comissao, intervalo1, intervalo2, duracao_intervalo, disponivel)
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+                INSERT INTO funcionario (id_endereco, id_cargo, id_turno, nome, email, contato, cpf, data_nascimento, data_registro, dia_pagamento, salario_fixo, comissao, intervalo1, duracao_intervalo, disponivel)
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
                 """;
         try (
             Connection connection = Conexao.getConnection();
@@ -40,11 +39,9 @@ public class FuncionarioDAO {
             statement.setShort(10, funcionario.getDia_pagamentoOriginal());
             statement.setDouble(11, funcionario.getSalario_fixo());
             statement.setDouble(12, funcionario.getComissao());
-            LocalTime[] intervalos = funcionario.getIntervalos();
-            statement.setTime(13, Time.valueOf(intervalos[0]));
-            statement.setTime(14, Time.valueOf(intervalos[1]));
-            statement.setShort(15, funcionario.getDuracaoIntervalosMinutos());
-            statement.setBoolean(16, false);
+            statement.setTime(13, Time.valueOf(funcionario.getIntervalo1()));
+            statement.setShort(14, funcionario.getDuracaoIntervalosMinutos());
+            statement.setBoolean(15, false);
             statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
@@ -93,9 +90,8 @@ public class FuncionarioDAO {
             statement.setDouble(8, funcionario.getSalario_fixo());
             statement.setDouble(9, funcionario.getComissao());
             statement.setDouble(10, funcionario.getHorasDeTrabalhoDeDiferenca());
-            LocalTime[] intervalos = funcionario.getIntervalos();
-            statement.setTime(10, Time.valueOf(intervalos[0]));
-            statement.setTime(11, Time.valueOf(intervalos[1]));
+            statement.setTime(10, Time.valueOf(funcionario.getIntervalo1()));
+            statement.setTime(11, Time.valueOf(funcionario.getIntervalo2()));
             statement.setShort(12, funcionario.getDuracaoIntervalosMinutos());
             statement.setInt(13, funcionario.getId());
 
@@ -139,6 +135,31 @@ public class FuncionarioDAO {
             PreparedStatement statement = connection.prepareStatement(sql);
         ) {
             statement.setString(1, email);
+
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                return resultSetToFuncionario(rs);
+            }
+
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        return null;
+    }
+
+    public static Funcionario findByNome(String nome) {
+        String sql = "SELECT * FROM funcionario WHERE nome = ?;";
+
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setString(1, nome);
 
             ResultSet rs = statement.executeQuery();
 
@@ -449,7 +470,6 @@ public class FuncionarioDAO {
         );
 
         funcionario.setComissao(rs.getDouble("comissao"));
-        funcionario.adicionarIntervalo(rs.getTime("intervalo2").toLocalTime());
         funcionario.data_registroParaResultSet(rs.getDate("data_registro").toLocalDate());
 
         if (rs.getBoolean("disponivel") == true) 

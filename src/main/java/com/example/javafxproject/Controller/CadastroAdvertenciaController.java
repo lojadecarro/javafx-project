@@ -1,8 +1,11 @@
 package com.example.javafxproject.Controller;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import com.example.javafxproject.Tables.Advertencia;
 import com.example.javafxproject.Tables.Funcionario;
+import com.example.javafxproject.TablesDAO.AdvertenciaDAO;
 import com.example.javafxproject.TablesDAO.FuncionarioDAO;
 
 import javafx.collections.FXCollections;
@@ -29,13 +32,12 @@ public class CadastroAdvertenciaController {
         cboFuncionario.setItems(itens);
     }
 
-    public void onActionCadastrarnovaadvertencia(){
-        String gravidade = cboGravidade.getValue();
+    public void onActionCadastrarnovaadvertencia() throws SQLException{
+        Byte gravidade = Byte.parseByte(cboGravidade.getValue());
         String funcionario = cboFuncionario.getValue();
         String motivo = txfMotivo.getText();
 
-        System.out.println(gravidade);
-        System.out.println(funcionario);
-        System.out.println(motivo);
+        Advertencia advertencia = new Advertencia(gravidade, FuncionarioDAO.findByNome(funcionario), motivo);
+        AdvertenciaDAO.create(advertencia);
     }
 }

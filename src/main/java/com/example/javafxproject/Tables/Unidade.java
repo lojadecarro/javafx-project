@@ -24,6 +24,7 @@ public class Unidade {
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
+        setEstado_conservacao(estado_conservacao);
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);
@@ -36,6 +37,7 @@ public class Unidade {
         setPlaca(placa);
         setQuilometragem(quilometragem);
         setValor_unitario(valor_unitario);
+        setEstado_conservacao(estado_conservacao);
         this.versao = versao;
         setTransmissao(transmissao);
         setCor(cor);

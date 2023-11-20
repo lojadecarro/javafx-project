@@ -136,64 +136,30 @@ public class TurnoDAO {
         }
     }
 
-    public List<Turno> findByInicio(LocalTime inicioTurno) {
-        List<Turno> turnos = new ArrayList<>();
-        Time minimoFaixaBusca = Time.valueOf(inicioTurno.minusMinutes(10));
-        Time maximoFaixaBusca = Time.valueOf(inicioTurno.plusMinutes(10));
+    public static Turno findByInicioEFim(LocalTime inicio, LocalTime fim) {
+        String sql = "SELECT * FROM turno WHERE inicio = ? AND fim = ?;";
 
-        if (!inicioTurno.isBefore(LocalTime.of(00, 10)) && inicioTurno.isBefore(LocalTime.of(23, 50))) {
-            String sql = "SELECT * FROM turno WHERE inicio >= ? AND inicio <= ?;";
+        try (
+            Connection connection = Conexao.getConnection();
+            PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setTime(1, Time.valueOf(inicio));
+            statement.setTime(2, Time.valueOf(fim));
 
-            try (
-                Connection connection = Conexao.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql);
-            ) {
-                statement.setTime(1, minimoFaixaBusca);
-                statement.setTime(2, maximoFaixaBusca);
+            ResultSet rs = statement.executeQuery();
 
-                ResultSet rs = statement.executeQuery();
-
-                while (rs.next()) {
-                    Turno turno = resultSetToTurno(rs);
-                    turnos.add(turno);
-                }
-
-                rs.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
+            if (rs.next()) {
+                return resultSetToTurno(rs);
             }
 
+            rs.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
             return null;
-
-        } else {
-            String sql = "SELECT * FROM turno WHERE inicio >= ? OR inicio <= ?;";
-
-            try (
-                Connection connection = Conexao.getConnection();
-                PreparedStatement statement = connection.prepareStatement(sql);
-            ) {
-                statement.setTime(1, minimoFaixaBusca);
-                statement.setTime(2, maximoFaixaBusca);
-
-                ResultSet rs = statement.executeQuery();
-
-                while (rs.next()) {
-                    Turno turno = resultSetToTurno(rs);
-                    turnos.add(turno);
-                }
-
-                rs.close();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-
-            return null;
-            
         }
+
+        return null;
     }
 
     protected static Turno resultSetToTurno(ResultSet rs) throws SQLException {

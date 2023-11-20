@@ -6,7 +6,7 @@ import java.sql.Statement;
 import com.example.javafxproject.Conexao.Conexao;
 
 public class CriarViews {
-    public void criar() throws SQLException{
+    public static void criar() throws SQLException{
         String sqlUnidades_para_venda = """
             create view unidades_para_venda as
             select ma.nome as marca, mo.nome as modelo, ve.nome as versao, es.nome as estado_conservacao, co.nome as cor, un.valor_unitario

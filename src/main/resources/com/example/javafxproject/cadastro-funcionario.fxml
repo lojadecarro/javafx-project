@@ -47,7 +47,9 @@ fx:controller="com.example.javafxproject.Controller.CadastroFuncionarioControlle
                 <Label text="Data de nascimento" />
                 <DatePicker fx:id="dtNascimento" promptText="Selecionar data" />
             </VBox>
+        </VBox>
 
+        <VBox spacing="20.0">
             <Label text="Endereço:" style="-fx-font-size: 16.0;" />
 
             <VBox spacing="10.0">
@@ -84,16 +86,6 @@ fx:controller="com.example.javafxproject.Controller.CadastroFuncionarioControlle
                 <TextField fx:id="txfDiaPagamento" promptText="1-31" />
             </VBox>
 
-            <VBox spacing="10.0">
-                <Label text="Intervalo" />
-                <TextField fx:id="txfIntervalo" promptText="hh:mm:ss" />
-            </VBox>
-
-            <VBox spacing="10.0">
-                <Label text="Duração do intervalo (minutos)" />
-                <TextField fx:id="txfDuracao" />
-            </VBox>
-
             <HBox spacing="20">
                 <Label text="Cargo:" />
                 <ComboBox fx:id="cboCargo" />
@@ -103,7 +95,16 @@ fx:controller="com.example.javafxproject.Controller.CadastroFuncionarioControlle
                 <Label text="Turno:" />
                 <ComboBox fx:id="cboTurno" />
             </HBox>
+            
+            <VBox spacing="10.0">
+                <Label text="Intervalo" />
+                <TextField fx:id="txfIntervalo" promptText="hh:mm:ss" />
+            </VBox>
 
+            <VBox spacing="10.0">
+                <Label text="Duração do intervalo (minutos)" />
+                <TextField fx:id="txfDuracao" />
+            </VBox>
         </VBox>
     </HBox>
 

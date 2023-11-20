@@ -112,7 +112,6 @@ public class CadastroCarroController {
         Transmissao transmissao = TransmissaoDAO.findByNome(cboTransmissao.getSelectionModel().getSelectedItem());
 
         Unidade unidade = new Unidade(ano, placa, quilometragem, estado, valorUnitario, versao, transmissao, cor);
-        UnidadeDAO unidadeCriada = new UnidadeDAO();
-        unidadeCriada.create(unidade);
+        UnidadeDAO.create(unidade);
     }
 }

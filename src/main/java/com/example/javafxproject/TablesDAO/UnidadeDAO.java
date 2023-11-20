@@ -16,10 +16,10 @@ import com.example.javafxproject.Tables.Unidade;
 import com.example.javafxproject.Tables.Versao;
 
 public class UnidadeDAO {
-    public Unidade create(Unidade unidade) throws SQLException {
+    public static Unidade create(Unidade unidade) throws SQLException {
         String sql = """
         INSERT INTO unidade (id_transmissao, id_cor, id_versao, id_estado_conservacao, ano, placa, quilometragem, valor_unitario, disponibilidade)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
         """;
 
         try (

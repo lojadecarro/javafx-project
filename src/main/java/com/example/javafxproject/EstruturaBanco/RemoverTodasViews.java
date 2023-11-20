@@ -6,7 +6,7 @@ import java.sql.Statement;
 import com.example.javafxproject.Conexao.Conexao;
 
 public class RemoverTodasViews {
-    public void remover() throws SQLException{
+    public static void remover() throws SQLException{
         String removerSeExisteUnidades_para_vendas = """
             drop view if exists unidades_para_venda;        
         """;

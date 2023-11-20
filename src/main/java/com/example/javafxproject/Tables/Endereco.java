@@ -75,16 +75,14 @@ public class Endereco {
     }
 
     public void setComplemento(String complemento) {
-        if (complemento == null) {
+        if (complemento.isEmpty()) {
             this.complemento = complemento;
             return;
         }
 
-        if ((!complemento.matches("^([a-zA-Z]+\\s\\d+)+$") || complemento.length() > 100) && complemento != null) {
+        if ((!complemento.matches("^([a-zA-Z]+\\s\\d+)+$") || complemento.length() > 100) && !complemento.isEmpty()) {
             throw new RuntimeException("O complemento deve ter a forma de subdivisão do local do endereço e o nome da subdivisão. Caso tenha mais de uma subdivisão, coloque da maior para a menor.");
         }
-
-        //complemento = complemento.substring(0, 1).toUpperCase() + complemento.substring(1).toLowerCase();
 
         this.complemento = complemento;
     }
@@ -98,10 +96,13 @@ public class Endereco {
     }
 
     public void setCep(String cep) {
-        if (!cep.matches("\\d{8}")) {
-            throw new RuntimeException("Se certifique que o CEP foi inserido sem \"-\".");
+        if (!cep.matches("\\d{8}") && !cep.matches("^\\d{5}-\\d{3}$")) {
+            throw new RuntimeException("Formato de CEP inválido.");
         }
-        cep = cep.substring(0, 5) + "-" + cep.substring(5);
+
+        if (cep.matches("\\d{8}")) {
+            cep = cep.substring(0, 5) + "-" + cep.substring(5);
+        }
 
         this.cep = cep;
     }

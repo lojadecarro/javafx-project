@@ -10,19 +10,14 @@ Cria as tabelas, views e inserts basicos.
 public class CriarEstruturaBDD {
     public static void main(String[] args) throws SQLException {
         
-        RemoverTodasTabelas removerTabelas = new RemoverTodasTabelas();
-        removerTabelas.remover();
+        RemoverTodasTabelas.remover();
 
-        CriarTabelas criarTabelas = new CriarTabelas();
-        criarTabelas.criar();
+        CriarTabelas.criar();
 
-        RemoverTodasViews removerViews = new RemoverTodasViews();
-        removerViews.remover();
+        RemoverTodasViews.remover();
         
-        CriarViews criarViews = new CriarViews();
-        criarViews.criar();
+        CriarViews.criar();
 
-        CriarInsertsBasicos criarInsertsBasicos = new CriarInsertsBasicos();
-        criarInsertsBasicos.criar();
+        CriarInsertsBasicos.criar();
     }
 }

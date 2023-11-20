@@ -44,11 +44,9 @@ public class CadastroClienteController {
         String cep = txfCEP.getText();
 
         Endereco endereco = new Endereco(logradouro, Short.valueOf(numero), complemento, cep);
-        EnderecoDAO enderecoCriado = new EnderecoDAO();
-        endereco = enderecoCriado.create(endereco);
+        EnderecoDAO.create(endereco);
         
         Cliente cliente = new Cliente(nomeCompleto, email, telefone, cpf, dataNascimento, endereco);
-        ClienteDAO clienteCriado = new ClienteDAO();
-        clienteCriado.create(cliente);
+        ClienteDAO.create(cliente);
     }
 }

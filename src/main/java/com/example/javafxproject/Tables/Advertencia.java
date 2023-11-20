@@ -12,7 +12,6 @@ public class Advertencia {
         setGravidade(gravidade);
         this.funcionario = funcionario;
         this.motivo = motivo;
-        funcionario.addAdvertencia(this);
     }
 
     public Advertencia(byte gravidade, Funcionario funcionario, String motivo) {
@@ -20,7 +19,6 @@ public class Advertencia {
         setGravidade(gravidade);
         this.funcionario = funcionario;
         this.motivo = motivo;
-        funcionario.addAdvertencia(this);
     }
 
     public int getId() {
