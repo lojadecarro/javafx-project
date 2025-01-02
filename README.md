@@ -1,66 +1,64 @@
-# Projeto Loja de Carros
+# Car Shop Project
 
-Bem-vindo ao repositório do projeto de Loja de Carros! Este é um projeto colaborativo de um grupo de amigos interessados em criar um banco de dados para uma loja de carros e desenvolver algumas interfaces gráficas usando JavaFX e Maven.
+Welcome to the Car Shop project repository! This is a collaborative project developed by a group of friends interested in creating a database for a car shop and designing graphical interfaces using JavaFX and Maven.
 
-## Objetivos
+## Objectives
 
-O objetivo deste projeto é criar um sistema de banco de dados eficiente para uma loja de carros, onde poderemos armazenar informações sobre veículos, clientes, vendas, e muito mais. Além disso, implementamos interfaces gráficas amigáveis usando JavaFX para interagir com o banco de dados.
+The goal of this project is to create an efficient database system for a car shop, allowing us to store information about vehicles, customers, sales, and more. Additionally, we implemented user-friendly graphical interfaces using JavaFX to interact with the database.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - Java
 - JavaFX
-- Banco de dados MySQL/MariaDB
+- MySQL/MariaDB Database
 - Maven
 
-## Estrutura do Repositório
+## Repository Structure
 
-O repositório está organizado da seguinte maneira:
+The repository is organized as follows:
 
-- `src/main/java/com/example/javafxproject/Controller`: Contém os arquivos fonte Java para a implementação das telas JavaFX e a lógica do sistema.
-- `src/main/java/com/example/javafxproject/EstruturaBanco`: Contém scripts SQL para criação e manutenção do banco de dados.
-- `src/main/resources/com/example/javafxproject`: Contém todos os scripts das telas em FXML
+- `src/main/java/com/example/javafxproject/Controller`: Contains Java source files for implementing JavaFX screens and system logic.
+- `src/main/java/com/example/javafxproject/EstruturaBanco`: Contains SQL scripts for database creation and maintenance.
+- `src/main/resources/com/example/javafxproject`: Contains all FXML scripts for the screens.
 
-## Como executar
+## How to Run
 
-1. Fazer o clone do repositório.
-```bash
-git clone https://github.com/lojadecarro/javafx-project.git
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/lojadecarro/javafx-project.git
 
-<!-- Remover a pasta .git:
-```bash
-rm -rf .git
-```
 
-Iniciar um repositório git, fazer commits e enviar para o seu repositório remoto. -->
+<!-- Remove the `.git` folder: 
+```bash rm -rf .git 
+``` 
 
-2. Após a clonagem, vá em `src/main/java/com/example/javafxproject/Conexao/Conexao.java`: é necessário comentar/descomentar os imports desnecessários/necessários para a sua máquina(vai depender se você está usando MariaDB ou MySQL). Modifique também a URL de acordo com seu servidor.
+Initialize a new Git repository, make commits, and push to your remote repository. -->
 
-3. Vá em `src/main/java/com/example/javafxproject/Main.java`: Este método testa a conexão com o servidor do banco de dados. Repita o que foi feito no passo 2. Ao final do método principal, você encontrará comandos para criar as tabelas, inserir valores e removê-las. É necessário criar as tabelas e realizar os inserts para que funcione normalmente.
 
-Nos laboratórios de informática do IFSP é necessário configurar o proxy para o funcionamento do maven:
+2. After cloning, go to src/main/java/com/example/javafxproject/Conexao/Conexao.java: You need to comment/uncomment the unnecessary/necessary imports for your machine (depending on whether you are using MariaDB or MySQL). Also, modify the URL according to your server.
+
+3. Go to src/main/java/com/example/javafxproject/Main.java: This method tests the connection with the database server. Repeat the steps from point 2. At the end of the main method, you will find commands to create tables, insert values, and remove them. It is necessary to create the tables and perform the inserts for the system to function properly.
+
+In the computer labs at IFSP, it is necessary to configure the proxy for Maven to work:
 
 ```bash
 export JAVA_TOOL_OPTIONS="-Djava.net.useSystemProxies=true"
 ```
 
-No mesmo terminal que foi configurado o proxy executar o comando:
+In the same terminal where the proxy was configured, run the following command:
 ```bash
 ./mvnw javafx:run
 ```
 
 
 
-## Contatos
+## Contacts
 
-Se você tiver alguma pergunta ou precisar de ajuda, não hesite em entrar em contato com os membros deste projeto:
+If you have any questions or need assistance, feel free to contact the members of this project:
 
 - [Tro Armen](https://github.com/troarmen)
 - [Rodrigo Mariano](https://github.com/Rodriomariano)
 - [Letícia Brandão](https://github.com/lleleal)
 - [Paulo Henrique](https://github.com/paulohernrique)
 
-Esse é o sistema da nossa loja de carros, desenvolvido na matéria de LP1 no IFSP!
-
-
+This is the car shop system we developed for the LP1 course at IFSP!
